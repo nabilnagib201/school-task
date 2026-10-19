@@ -1,6 +1,13 @@
 (function () {
     'use strict';
 
+    /* ========== 0) الصورة غير الموجودة تختفي ويظهر مكانها الشكل البديل ========== */
+    document.querySelectorAll('img').forEach(function (img) {
+        function hide() { img.style.display = 'none'; }
+        img.addEventListener('error', hide);
+        if (img.complete && img.naturalWidth === 0) hide();
+    });
+
     /* ========== 1) الهيدر يصغر عند النزول ========== */
     var header = document.querySelector('header');
     function onScroll() {
@@ -196,6 +203,42 @@
             renderQuestion();
         });
     }
+
+    /* ========== 6) مقاطع الفيديو ========== */
+    /* DEBUG = true يعرض سبب تعذر التشغيل داخل الصفحة. غيّرها إلى false عند التسليم */
+    var DEBUG = true;
+
+    document.querySelectorAll('.film').forEach(function (film) {
+        var video = film.querySelector('video');
+        var screen = film.querySelector('.film_screen');
+        if (!video || !screen) return;
+
+        function missing() {
+            if (film.classList.contains('empty')) return;
+            film.classList.add('empty');
+            video.style.display = 'none';
+
+            var text = 'مقطع أرشيفي';
+            if (DEBUG) {
+                var code = video.error ? video.error.code : 0;
+                var why = code === 3 ? 'الملف موجود لكن تالف أو ترميزه غير مدعوم (حوّله إلى mp4 بترميز H.264)'
+                    : code === 2 ? 'خطأ في الشبكة أثناء التحميل'
+                        : 'الملف غير موجود في هذا المسار، أو صيغته غير مدعومة';
+                text = 'تعذر تشغيل الفيديو\n' + why + '\n' + decodeURI(video.getAttribute('src'));
+            }
+
+            var label = document.createElement('span');
+            label.className = 'film_label';
+            label.textContent = text;
+            label.style.cssText = 'position:absolute;inset:0;z-index:3;display:grid;place-items:center;' +
+                'padding:16px;text-align:center;white-space:pre-line;direction:rtl;' +
+                'color:#ddd;font-size:0.85rem;line-height:1.8;word-break:break-all';
+            screen.appendChild(label);
+        }
+
+        video.addEventListener('error', missing);
+        if (video.networkState === 3) missing();
+    });
 
     renderQuestion();
 })();

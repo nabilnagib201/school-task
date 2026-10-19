@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/index.css">
+    <link rel="icon" href="static/img/softWebLogo.png">
 </head>
 
 <body>
@@ -35,6 +36,8 @@
                 <a class="link_item" href="#results">النتائج</a>
                 <a class="link_item" href="#gallery">المعرض</a>
                 <a class="link_item" href="#quiz">اختبر نفسك</a>
+                <a class="link_item" href="#we">من نحن</a>
+
             </div>
         </nav>
     </header>
@@ -80,33 +83,33 @@
             <h2 class="section-title">قادة النصر</h2>
             <div class="leaders_box">
                 <div class="leaders_item">
-                    <div class="leaders_img"><img src="" class="leaders_photo" alt="أنور السادات"></div>
+                    <div class="leaders_img"><img src="static/img/leaders/elsadat.jpg" class="leaders_photo"
+                            alt="أنور السادات"></div>
                     <div class="leaders_string">
                         <h1>أنور السادات</h1>
                         <p>صاحب قرار الحرب</p>
                     </div>
-                    <button data-title="أنور السادات"
-                        data-text="رئيس الجمهورية والقائد الأعلى للقوات المسلحة. اتخذ قرار الحرب وحدد موعدها بالتنسيق مع سوريا، وبعد الحرب اتجه إلى المفاوضات التي انتهت بمعاهدة السلام عام ١٩٧٩.">دخول الان</button>
+                    <button id="btn-leaders">دخول الان</button>
                 </div>
 
                 <div class="leaders_item">
-                    <div class="leaders_img"><img src="" class="leaders_photo" alt="أحمد إسماعيل علي"></div>
+                    <div class="leaders_img"><img src="static/img/leaders/a7med_asma3il_3li.jpg" class="leaders_photo"
+                            alt="أحمد إسماعيل علي"></div>
                     <div class="leaders_string">
                         <h1>أحمد إسماعيل علي</h1>
                         <p>وزير الحربية والقائد العام</p>
                     </div>
-                    <button data-title="أحمد إسماعيل علي"
-                        data-text="تولى وزارة الحربية والقيادة العامة للقوات المسلحة قبل الحرب بعام تقريبا، وأشرف على الإعداد والتدريب وإدارة العمليات.">دخول الان</button>
+                    <button id="btn-leaders">دخول الان</button>
                 </div>
 
                 <div class="leaders_item">
-                    <div class="leaders_img"><img src="" class="leaders_photo" alt="سعد الدين الشاذلي"></div>
+                    <div class="leaders_img"><img src="static/img/leaders/sa3d_eldin_elshazli.jpg" class="leaders_photo"
+                            alt="سعد الدين الشاذلي"></div>
                     <div class="leaders_string">
                         <h1>سعد الدين الشاذلي</h1>
                         <p>رئيس أركان حرب القوات المسلحة</p>
                     </div>
-                    <button data-title="سعد الدين الشاذلي"
-                        data-text="رئيس أركان حرب القوات المسلحة. شارك في تطوير خطط العمليات وإعداد القوات للعبور، وكتب بعد الحرب مذكراته عنها.">دخول الان</button>
+                    <button id="btn-leaders">دخول الان</button>
                 </div>
             </div>
         </section>
@@ -116,33 +119,39 @@
             <h2 class="section-title">الخطط العسكرية</h2>
             <div class="plan_box">
                 <div class="plan_item">
-                    <div class="plan_photo"><img src="" class="plan_img" alt="العملية بدر"></div>
+                    <div class="plan_photo"><img src="static/img/plan/badr.jpg" class="plan_img" alt="العملية بدر">
+                    </div>
                     <div class="plan_string">
                         <h1>العملية بدر</h1>
                         <p>خطة العبور واقتحام خط بارليف</p>
                     </div>
                     <button data-title="العملية بدر"
-                        data-text="الخطة الأساسية لعبور قناة السويس. بدأت بضربة جوية ثم عبور المشاة بالقوارب المطاطية، وبعدها أقيمت الكباري لعبور الدبابات والمعدات وتثبيت رؤوس كباري شرق القناة.">دخول الان</button>
+                        data-text="الخطة الأساسية لعبور قناة السويس. بدأت بضربة جوية ثم عبور المشاة بالقوارب المطاطية، وبعدها أقيمت الكباري لعبور الدبابات والمعدات وتثبيت رؤوس كباري شرق القناة.">دخول
+                        الان</button>
                 </div>
 
                 <div class="plan_item">
-                    <div class="plan_photo"><img src="" class="plan_img" alt="الخداع الاستراتيجي"></div>
+                    <div class="plan_photo"><img src="static/img/plan/el5da3.jpg" class="plan_img"
+                            alt="الخداع الاستراتيجي"></div>
                     <div class="plan_string">
                         <h1>الخداع الاستراتيجي</h1>
                         <p>إخفاء موعد الحرب عن العدو</p>
                     </div>
                     <button data-title="الخداع الاستراتيجي"
-                        data-text="إجراءات لإخفاء موعد الحرب: مناورات متكررة اعتاد عليها العدو، وإظهار الاستعدادات بشكل عادي، واختيار توقيت غير متوقع هو ٦ أكتوبر، وكان في رمضان وفي عيد الغفران عند اليهود.">دخول الان</button>
+                        data-text="إجراءات لإخفاء موعد الحرب: مناورات متكررة اعتاد عليها العدو، وإظهار الاستعدادات بشكل عادي، واختيار توقيت غير متوقع هو ٦ أكتوبر، وكان في رمضان وفي عيد الغفران عند اليهود.">دخول
+                        الان</button>
                 </div>
 
                 <div class="plan_item">
-                    <div class="plan_photo"><img src="" class="plan_img" alt="حائط الصواريخ"></div>
+                    <div class="plan_photo"><img src="static/img/plan/7at_el_soari5.jpg" class="plan_img"
+                            alt="حائط الصواريخ"></div>
                     <div class="plan_string">
                         <h1>حائط الصواريخ</h1>
                         <p>حماية القوات من الطيران</p>
                     </div>
                     <button data-title="حائط الصواريخ"
-                        data-text="شبكة من صواريخ الدفاع الجوي أقيمت غرب القناة لحماية القوات العابرة من الضربات الجوية، إلى جانب الصواريخ المضادة للدبابات مع المشاة.">دخول الان</button>
+                        data-text="شبكة من صواريخ الدفاع الجوي أقيمت غرب القناة لحماية القوات العابرة من الضربات الجوية، إلى جانب الصواريخ المضادة للدبابات مع المشاة.">دخول
+                        الان</button>
                 </div>
             </div>
         </section>
@@ -154,37 +163,91 @@
                 <article class="tl_item">
                     <span class="tl_date">٦ أكتوبر ١٩٧٣ - الساعة ٢:٠٥ ظهرا</span>
                     <h3>ساعة الصفر</h3>
-                    <p>ضربة جوية مصرية ثم بدء عبور القناة، وفي الوقت نفسه بدأ الهجوم السوري في الجولان.</p>
+                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
+                    <figure class="film">
+                        <div class="film_screen">
+                            <video class="film_media" src="static/video/sa3eh_el_sifr.mp4" controls preload="metadata"
+                                playsinline></video>
+                        </div>
+                        <figcaption class="film_caption">ضربة جوية مصرية ثم بدء عبور القناة، وفي الوقت نفسه بدأ الهجوم
+                            السوري في الجولان.</figcaption>
+                    </figure>
                 </article>
                 <article class="tl_item">
                     <span class="tl_date">الأيام الأولى</span>
                     <h3>تحطيم خط بارليف</h3>
-                    <p>اقتحام الساتر الترابي وتدمير النقاط القوية وإقامة رؤوس كباري شرق القناة.</p>
+                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
+                    <figure class="film">
+                        <div class="film_screen">
+                            <video class="film_media" src="static/video/el_5at.mp4" controls preload="metadata"
+                                playsinline></video>
+                        </div>
+                        <figcaption class="film_caption">اقتحام الساتر الترابي بمضخات المياه وتدمير النقاط القوية وإقامة
+                            رؤوس كباري شرق القناة.</figcaption>
+                    </figure>
                 </article>
                 <article class="tl_item">
                     <span class="tl_date">١٤ أكتوبر</span>
                     <h3>المنصورة والدبابات</h3>
-                    <p>معركة المنصورة الجوية في الدلتا، ومعركة الدبابات الكبرى في سيناء.</p>
+                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
+                    <figure class="film">
+                        <div class="film_screen">
+                            <video class="film_media" src="static/video/elmansora.mp4" controls preload="metadata"
+                                playsinline></video>
+                        </div>
+                        <figcaption class="film_caption">معركة المنصورة الجوية في الدلتا، ومعركة الدبابات الكبرى في
+                            سيناء.</figcaption>
+                    </figure>
                 </article>
                 <article class="tl_item">
                     <span class="tl_date">١٦ أكتوبر</span>
                     <h3>الثغرة</h3>
-                    <p>عبور قوة إسرائيلية إلى غرب القناة في منطقة الدفرسوار.</p>
+                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
+                    <figure class="film">
+                        <div class="film_screen">
+                            <video class="film_media" src="static/video/el_the8ra.mp4" controls preload="metadata"
+                                playsinline></video>
+                        </div>
+                        <figcaption class="film_caption">عبور قوة إسرائيلية إلى غرب القناة في منطقة الدفرسوار.
+                        </figcaption>
+                    </figure>
                 </article>
                 <article class="tl_item">
                     <span class="tl_date">١٧ أكتوبر</span>
                     <h3>سلاح البترول</h3>
-                    <p>إعلان الدول العربية خفض إنتاج النفط وحظره عن الدول الداعمة لإسرائيل.</p>
+                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
+                    <figure class="film">
+                        <div class="film_screen">
+                            <video class="film_media" src="static/video/el_betrol.mp4" controls preload="metadata"
+                                playsinline></video>
+                        </div>
+                        <figcaption class="film_caption">إعلان الدول العربية خفض إنتاج النفط وحظره عن الدول الداعمة
+                            لإسرائيل.</figcaption>
+                    </figure>
                 </article>
                 <article class="tl_item">
                     <span class="tl_date">٢٢ أكتوبر</span>
                     <h3>قرار ٣٣٨</h3>
-                    <p>مجلس الأمن يصدر قرارا بوقف إطلاق النار.</p>
+                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
+                    <figure class="film">
+                        <div class="film_screen">
+                            <img class="film_media" src="static/img/moments/338.jpg"></img>
+                        </div>
+                        <figcaption class="film_caption">مجلس الأمن يصدر قرارا بوقف إطلاق النار.</figcaption>
+                    </figure>
                 </article>
                 <article class="tl_item">
                     <span class="tl_date">٢٥ أكتوبر</span>
                     <h3>استقرار وقف إطلاق النار</h3>
-                    <p>توقف القتال على الجبهة المصرية بعد قرار جديد من مجلس الأمن.</p>
+                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
+                    <figure class="film">
+                        <div class="film_screen">
+                            <video class="film_media" src="static/video/w2f_etlak_elnar.mp4" controls preload="metadata"
+                                playsinline></video>
+                        </div>
+                        <figcaption class="film_caption">توقف القتال على الجبهة المصرية بعد قرار جديد من مجلس الأمن.
+                        </figcaption>
+                    </figure>
                 </article>
             </div>
         </section>
@@ -196,7 +259,8 @@
                 <article class="info_item">
                     <span class="tag">٦ أكتوبر</span>
                     <h3>العبور وتحطيم خط بارليف</h3>
-                    <p>عبرت القوات القناة بالقوارب المطاطية، وفتح المهندسون ثغرات في الساتر الترابي بمضخات المياه، ثم أقاموا الكباري لعبور المعدات.</p>
+                    <p>عبرت القوات القناة بالقوارب المطاطية، وفتح المهندسون ثغرات في الساتر الترابي بمضخات المياه، ثم
+                        أقاموا الكباري لعبور المعدات.</p>
                 </article>
                 <article class="info_item">
                     <span class="tag">٦ أكتوبر</span>
@@ -206,7 +270,8 @@
                 <article class="info_item">
                     <span class="tag">١٤ أكتوبر</span>
                     <h3>معركة المنصورة الجوية</h3>
-                    <p>اشتبك الطيران المصري مع الطيران الإسرائيلي في سماء الدلتا، ويحتفل سلاح الطيران بهذا اليوم كل عام.</p>
+                    <p>اشتبك الطيران المصري مع الطيران الإسرائيلي في سماء الدلتا، ويحتفل سلاح الطيران بهذا اليوم كل عام.
+                    </p>
                 </article>
                 <article class="info_item">
                     <span class="tag">١٤ أكتوبر</span>
@@ -283,12 +348,27 @@
         <section class="sec" id="gallery">
             <h2 class="section-title">معرض الصور</h2>
             <div class="gallery_box">
-                <figure class="gallery_item"><img src="" alt="لحظة العبور"><figcaption>لحظة العبور</figcaption></figure>
-                <figure class="gallery_item"><img src="" alt="الكباري على القناة"><figcaption>الكباري على القناة</figcaption></figure>
-                <figure class="gallery_item"><img src="" alt="المقاتلات"><figcaption>المقاتلات</figcaption></figure>
-                <figure class="gallery_item"><img src="" alt="الدبابات"><figcaption>الدبابات</figcaption></figure>
-                <figure class="gallery_item"><img src="" alt="رفع العلم"><figcaption>رفع العلم</figcaption></figure>
-                <figure class="gallery_item"><img src="" alt="القادة"><figcaption>القادة</figcaption></figure>
+                <figure class="gallery_item"><img src="static/img/moments/el3bor.jpg" alt="لحظة العبور">
+                    <figcaption>لحظة العبور</figcaption>
+                </figure>
+                <figure class="gallery_item"><img src="static/img/moments/el_kbary.jpg" alt="الكباري على القناة">
+                    <figcaption>الكباري على القناة</figcaption>
+                </figure>
+                <figure class="gallery_item"><img src="static/img/moments/elmoatelat.jpg" alt="المقاتلات">
+                    <figcaption>المقاتلات</figcaption>
+                </figure>
+                <figure class="gallery_item"><img src="static/img/moments/dbabat.jpg" alt="الدبابات">
+                    <figcaption>الدبابات</figcaption>
+                </figure>
+                <figure class="gallery_item"><img src="static/img/moments/el3alam.jpg" alt="رفع العلم">
+                    <figcaption>رفع العلم</figcaption>
+                </figure>
+                <figure class="gallery_item"><img src="static/img/moments/elkada.jpg" alt="القادة">
+                    <figcaption>القادة</figcaption>
+                </figure>
+                <figure class="gallery_item"><img src="static/img/moments/elkada.jpg" alt="الماذن العالية">
+                    <figcaption>الماذن العالية</figcaption>
+                </figure>
             </div>
         </section>
 
@@ -296,6 +376,45 @@
         <section class="sec" id="quiz">
             <h2 class="section-title">اختبر نفسك</h2>
             <div class="quiz_box" id="quizBox"></div>
+        </section>
+
+        <section class="leaders_section" id="we">
+            <h2 class="section-title">من نحن</h2>
+            <div class="leaders_box">
+                <div class="leaders_item">
+                    <div class="leaders_img"><img src="static/img/we/gemmy.jpg" class="leaders_photo" alt="جمال على">
+                    </div>
+                    <div class="leaders_string">
+                        <h1>جمال على</h1>
+                        <p>مسؤول الفرونت اند و تصميمات</p>
+                    </div>
+                    <button data-title="جمال علي" data-text="مسؤول الفرونت اند و شكل موقع و الصور">دخول الان</button>
+                </div>
+
+                <div class="leaders_item">
+                    <div class="leaders_img"><img src="static/img/we/nabil.jpg" class="leaders_photo" alt="نبيل نجيب">
+                    </div>
+                    <div class="leaders_string">
+                        <h1>نبيل نجيب</h1>
+                        <p>مبرمج الباك اند و الفرونت اند</p>
+                    </div>
+                    <button data-title="نبيل نجيب"
+                        data-text="مبرمج الباك اند و الفرونت اند و ساعد في صور وفيديوهات و وضع ترتيب ملفات و قام باضافه الانيميشن">دخول
+                        الان</button>
+                </div>
+
+                <div class="leaders_item">
+                    <div class="leaders_img"><img src="static/img/leaders/.jpg" class="leaders_photo"
+                            alt="محمد هاني جادو"></div>
+                    <div class="leaders_string">
+                        <h1>محمد هاني جادو</h1>
+                        <p>جمع الداتا و جاب صور و فديوهات</p>
+                    </div>
+                    <button data-title="محمد هاني جادو"
+                        data-text="جمع الداتا و جاب صور و فديوهات و جاب معظم الاحداث اللي حصلت و بحث عن الاحداث اللي حصلت و تصاعدات">دخول
+                        الان</button>
+                </div>
+            </div>
         </section>
 
         <!--المصادر-->
@@ -306,8 +425,12 @@
                 <li>مذكرات حرب أكتوبر، الفريق سعد الدين الشاذلي</li>
                 <li>مذكرات الجمسي: حرب أكتوبر ١٩٧٣، المشير محمد عبد الغني الجمسي</li>
                 <li>الهيئة العامة للاستعلامات (sis.gov.eg)</li>
+                <li>المقاطع الأرشيفية في الجدول الزمني: <a
+                        href="https://commons.wikimedia.org/wiki/Yom_Kippur_War">wikimedia</a></li>
             </ul>
         </section>
+
+
     </main>
 
     <!--نافذة التفاصيل-->
@@ -324,6 +447,7 @@
     </footer>
 
     <script src="static/scripts/app.js"></script>
+    <script src="static/scripts/index.js"></script>
 </body>
 
 </html>
