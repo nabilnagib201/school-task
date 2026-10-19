@@ -81,16 +81,27 @@ header.scrolled {
     color: var(--main-orange);
 }
 
+nav {
+    min-width: 0;
+}
+
 .link_box {
     display: flex;
-    gap: 8px;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.link_box::-webkit-scrollbar {
+    display: none;
 }
 
 .link_item {
     position: relative;
     color: var(--main-blue);
     font-weight: 600;
-    padding: 6px 14px;
+    white-space: nowrap;
+    padding: 6px 10px;
     transition: color 0.3s;
 }
 
@@ -99,8 +110,8 @@ header.scrolled {
     content: '';
     position: absolute;
     bottom: 0;
-    right: 14px;
-    left: 14px;
+    right: 10px;
+    left: 10px;
     height: 3px;
     border-radius: 3px;
     background: var(--main-orange);
@@ -217,14 +228,26 @@ footer p {
 /* ========== الظهور عند التمرير ========== */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-    transition-delay: calc(var(--i, 0) * 120ms);
 }
 
 .reveal.in {
     opacity: 1;
-    transform: none;
+    animation: revealUp 0.8s var(--ease) backwards;
+    animation-delay: calc(var(--i, 0) * 120ms);
+}
+
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+}
+
+@keyframes revealX {
+    from {
+        opacity: 0;
+        transform: translateX(var(--dx, 60px));
+    }
 }
 
 /* ========== جوال ========== */
@@ -232,6 +255,10 @@ footer p {
     header {
         flex-direction: column;
         gap: 6px;
+    }
+
+    nav {
+        width: 100%;
     }
 
     .section-title {
@@ -255,6 +282,5 @@ footer p {
 
     .reveal {
         opacity: 1;
-        transform: none;
     }
 }

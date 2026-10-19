@@ -26,8 +26,15 @@
         <nav>
             <div class="link_box">
                 <a class="link_item" href="#word">الرئيسية</a>
+                <a class="link_item" href="#causes">الأسباب</a>
                 <a class="link_item" href="#leaders">القادة</a>
                 <a class="link_item" href="#plans">الخطط</a>
+                <a class="link_item" href="#timeline">الجدول الزمني</a>
+                <a class="link_item" href="#battles">المعارك</a>
+                <a class="link_item" href="#weapons">الأسلحة</a>
+                <a class="link_item" href="#results">النتائج</a>
+                <a class="link_item" href="#gallery">المعرض</a>
+                <a class="link_item" href="#quiz">اختبر نفسك</a>
             </div>
         </nav>
     </header>
@@ -41,7 +48,30 @@
                     <span class="word_white">المجيدة</span>
                 </h1>
                 <p class="word_sub">السادس من أكتوبر ١٩٧٣</p>
-                <a class="btn" href="#leaders">اكتشف القادة</a>
+                <a class="btn" href="#causes">ابدأ الرحلة</a>
+            </div>
+        </section>
+
+        <!--أسباب الحرب-->
+        <section class="sec" id="causes">
+            <h2 class="section-title">لماذا قامت الحرب؟</h2>
+            <div class="cards_grid">
+                <article class="info_item">
+                    <h3>هزيمة ١٩٦٧</h3>
+                    <p>احتلت إسرائيل سيناء والجولان والضفة الغربية وقطاع غزة، وأصبحت قناة السويس خط المواجهة.</p>
+                </article>
+                <article class="info_item">
+                    <h3>حرب الاستنزاف</h3>
+                    <p>من ١٩٦٧ إلى ١٩٧٠ استمرت المعارك على ضفتي القناة، وأعادت للجيش ثقته بنفسه.</p>
+                </article>
+                <article class="info_item">
+                    <h3>انسداد الحلول السياسية</h3>
+                    <p>ظلت الأرض محتلة رغم المحاولات السياسية، فتأكدت القيادة أن استعادتها تحتاج إلى القوة.</p>
+                </article>
+                <article class="info_item">
+                    <h3>إعادة بناء الجيش</h3>
+                    <p>ست سنوات من التدريب المكثف والتسليح الجديد ووضع الخطط الدقيقة.</p>
+                </article>
             </div>
         </section>
 
@@ -50,30 +80,33 @@
             <h2 class="section-title">قادة النصر</h2>
             <div class="leaders_box">
                 <div class="leaders_item">
-                    <div class="leaders_img"><img src="" class="leaders_photo" alt=""></div>
+                    <div class="leaders_img"><img src="" class="leaders_photo" alt="أنور السادات"></div>
                     <div class="leaders_string">
-                        <h1>اسم القائد</h1>
-                        <p>موضوع</p>
+                        <h1>أنور السادات</h1>
+                        <p>صاحب قرار الحرب</p>
                     </div>
-                    <button>دخول الان</button>
+                    <button data-title="أنور السادات"
+                        data-text="رئيس الجمهورية والقائد الأعلى للقوات المسلحة. اتخذ قرار الحرب وحدد موعدها بالتنسيق مع سوريا، وبعد الحرب اتجه إلى المفاوضات التي انتهت بمعاهدة السلام عام ١٩٧٩.">دخول الان</button>
                 </div>
 
                 <div class="leaders_item">
-                    <div class="leaders_img"><img src="" class="leaders_photo" alt=""></div>
+                    <div class="leaders_img"><img src="" class="leaders_photo" alt="أحمد إسماعيل علي"></div>
                     <div class="leaders_string">
-                        <h1>اسم القائد</h1>
-                        <p>موضوع</p>
+                        <h1>أحمد إسماعيل علي</h1>
+                        <p>وزير الحربية والقائد العام</p>
                     </div>
-                    <button>دخول الان</button>
+                    <button data-title="أحمد إسماعيل علي"
+                        data-text="تولى وزارة الحربية والقيادة العامة للقوات المسلحة قبل الحرب بعام تقريبا، وأشرف على الإعداد والتدريب وإدارة العمليات.">دخول الان</button>
                 </div>
 
                 <div class="leaders_item">
-                    <div class="leaders_img"><img src="" class="leaders_photo" alt=""></div>
+                    <div class="leaders_img"><img src="" class="leaders_photo" alt="سعد الدين الشاذلي"></div>
                     <div class="leaders_string">
-                        <h1>اسم القائد</h1>
-                        <p>موضوع</p>
+                        <h1>سعد الدين الشاذلي</h1>
+                        <p>رئيس أركان حرب القوات المسلحة</p>
                     </div>
-                    <button>دخول الان</button>
+                    <button data-title="سعد الدين الشاذلي"
+                        data-text="رئيس أركان حرب القوات المسلحة. شارك في تطوير خطط العمليات وإعداد القوات للعبور، وكتب بعد الحرب مذكراته عنها.">دخول الان</button>
                 </div>
             </div>
         </section>
@@ -83,34 +116,208 @@
             <h2 class="section-title">الخطط العسكرية</h2>
             <div class="plan_box">
                 <div class="plan_item">
-                    <div class="plan_photo"><img src="" class="plan_img" alt=""></div>
+                    <div class="plan_photo"><img src="" class="plan_img" alt="العملية بدر"></div>
                     <div class="plan_string">
-                        <h1>اسم الخطه</h1>
-                        <p>موضوع...</p>
+                        <h1>العملية بدر</h1>
+                        <p>خطة العبور واقتحام خط بارليف</p>
                     </div>
-                    <button>دخول الان</button>
+                    <button data-title="العملية بدر"
+                        data-text="الخطة الأساسية لعبور قناة السويس. بدأت بضربة جوية ثم عبور المشاة بالقوارب المطاطية، وبعدها أقيمت الكباري لعبور الدبابات والمعدات وتثبيت رؤوس كباري شرق القناة.">دخول الان</button>
                 </div>
 
                 <div class="plan_item">
-                    <div class="plan_photo"><img src="" class="plan_img" alt=""></div>
+                    <div class="plan_photo"><img src="" class="plan_img" alt="الخداع الاستراتيجي"></div>
                     <div class="plan_string">
-                        <h1>اسم الخطه</h1>
-                        <p>موضوع...</p>
+                        <h1>الخداع الاستراتيجي</h1>
+                        <p>إخفاء موعد الحرب عن العدو</p>
                     </div>
-                    <button>دخول الان</button>
+                    <button data-title="الخداع الاستراتيجي"
+                        data-text="إجراءات لإخفاء موعد الحرب: مناورات متكررة اعتاد عليها العدو، وإظهار الاستعدادات بشكل عادي، واختيار توقيت غير متوقع هو ٦ أكتوبر، وكان في رمضان وفي عيد الغفران عند اليهود.">دخول الان</button>
                 </div>
 
                 <div class="plan_item">
-                    <div class="plan_photo"><img src="" class="plan_img" alt=""></div>
+                    <div class="plan_photo"><img src="" class="plan_img" alt="حائط الصواريخ"></div>
                     <div class="plan_string">
-                        <h1>اسم الخطه</h1>
-                        <p>موضوع...</p>
+                        <h1>حائط الصواريخ</h1>
+                        <p>حماية القوات من الطيران</p>
                     </div>
-                    <button>دخول الان</button>
+                    <button data-title="حائط الصواريخ"
+                        data-text="شبكة من صواريخ الدفاع الجوي أقيمت غرب القناة لحماية القوات العابرة من الضربات الجوية، إلى جانب الصواريخ المضادة للدبابات مع المشاة.">دخول الان</button>
                 </div>
             </div>
         </section>
+
+        <!--الجدول الزمني-->
+        <section class="sec" id="timeline">
+            <h2 class="section-title">الجدول الزمني</h2>
+            <div class="timeline">
+                <article class="tl_item">
+                    <span class="tl_date">٦ أكتوبر ١٩٧٣ - الساعة ٢:٠٥ ظهرا</span>
+                    <h3>ساعة الصفر</h3>
+                    <p>ضربة جوية مصرية ثم بدء عبور القناة، وفي الوقت نفسه بدأ الهجوم السوري في الجولان.</p>
+                </article>
+                <article class="tl_item">
+                    <span class="tl_date">الأيام الأولى</span>
+                    <h3>تحطيم خط بارليف</h3>
+                    <p>اقتحام الساتر الترابي وتدمير النقاط القوية وإقامة رؤوس كباري شرق القناة.</p>
+                </article>
+                <article class="tl_item">
+                    <span class="tl_date">١٤ أكتوبر</span>
+                    <h3>المنصورة والدبابات</h3>
+                    <p>معركة المنصورة الجوية في الدلتا، ومعركة الدبابات الكبرى في سيناء.</p>
+                </article>
+                <article class="tl_item">
+                    <span class="tl_date">١٦ أكتوبر</span>
+                    <h3>الثغرة</h3>
+                    <p>عبور قوة إسرائيلية إلى غرب القناة في منطقة الدفرسوار.</p>
+                </article>
+                <article class="tl_item">
+                    <span class="tl_date">١٧ أكتوبر</span>
+                    <h3>سلاح البترول</h3>
+                    <p>إعلان الدول العربية خفض إنتاج النفط وحظره عن الدول الداعمة لإسرائيل.</p>
+                </article>
+                <article class="tl_item">
+                    <span class="tl_date">٢٢ أكتوبر</span>
+                    <h3>قرار ٣٣٨</h3>
+                    <p>مجلس الأمن يصدر قرارا بوقف إطلاق النار.</p>
+                </article>
+                <article class="tl_item">
+                    <span class="tl_date">٢٥ أكتوبر</span>
+                    <h3>استقرار وقف إطلاق النار</h3>
+                    <p>توقف القتال على الجبهة المصرية بعد قرار جديد من مجلس الأمن.</p>
+                </article>
+            </div>
+        </section>
+
+        <!--المعارك-->
+        <section class="sec" id="battles">
+            <h2 class="section-title">أبرز المعارك</h2>
+            <div class="cards_grid battles_box">
+                <article class="info_item">
+                    <span class="tag">٦ أكتوبر</span>
+                    <h3>العبور وتحطيم خط بارليف</h3>
+                    <p>عبرت القوات القناة بالقوارب المطاطية، وفتح المهندسون ثغرات في الساتر الترابي بمضخات المياه، ثم أقاموا الكباري لعبور المعدات.</p>
+                </article>
+                <article class="info_item">
+                    <span class="tag">٦ أكتوبر</span>
+                    <h3>الجبهة السورية</h3>
+                    <p>هاجمت القوات السورية في الجولان، واستعادت في اليوم الأول موقع جبل الشيخ.</p>
+                </article>
+                <article class="info_item">
+                    <span class="tag">١٤ أكتوبر</span>
+                    <h3>معركة المنصورة الجوية</h3>
+                    <p>اشتبك الطيران المصري مع الطيران الإسرائيلي في سماء الدلتا، ويحتفل سلاح الطيران بهذا اليوم كل عام.</p>
+                </article>
+                <article class="info_item">
+                    <span class="tag">١٤ أكتوبر</span>
+                    <h3>معركة الدبابات في سيناء</h3>
+                    <p>من أكبر معارك الدبابات في التاريخ الحديث، وغيّرت مسار العمليات على الجبهة.</p>
+                </article>
+                <article class="info_item">
+                    <span class="tag">١٦ أكتوبر</span>
+                    <h3>الثغرة وصمود السويس</h3>
+                    <p>تسللت قوة إسرائيلية غرب القناة، لكن مدينة السويس صمدت وأفشلت دخولها.</p>
+                </article>
+            </div>
+        </section>
+
+        <!--الأسلحة-->
+        <section class="sec sec_dark" id="weapons">
+            <h2 class="section-title">الأسلحة والمعدات</h2>
+            <div class="cards_grid">
+                <article class="weapon_item">
+                    <h3>صواريخ سام</h3>
+                    <p>شبكة الدفاع الجوي التي حمت القوات العابرة من الضربات الجوية.</p>
+                </article>
+                <article class="weapon_item">
+                    <h3>صواريخ مالوتكا</h3>
+                    <p>صواريخ موجهة مضادة للدبابات حملها الجنود ودمروا بها أعدادا من دبابات العدو.</p>
+                </article>
+                <article class="weapon_item">
+                    <h3>مضخات المياه</h3>
+                    <p>فتحت ثغرات في الساتر الترابي في وقت قصير.</p>
+                </article>
+                <article class="weapon_item">
+                    <h3>القوارب والكباري</h3>
+                    <p>نقلت الجنود أولا ثم الدبابات والمعدات إلى الضفة الشرقية.</p>
+                </article>
+                <article class="weapon_item">
+                    <h3>مقاتلات ميج-٢١</h3>
+                    <p>من مقاتلات سلاح الجو المصري في المعارك الجوية.</p>
+                </article>
+                <article class="weapon_item">
+                    <h3>دبابات تي-٥٥ وتي-٦٢</h3>
+                    <p>شكلت قوة الدبابات في المعارك البرية.</p>
+                </article>
+            </div>
+        </section>
+
+        <!--النتائج-->
+        <section class="sec" id="results">
+            <h2 class="section-title">نتائج الحرب</h2>
+            <div class="cards_grid">
+                <article class="result_item">
+                    <span class="result_year">١٩٧٤</span>
+                    <h3>فض الاشتباك الأول</h3>
+                    <p>انسحبت القوات الإسرائيلية من غرب القناة ومن جزء من شرقها.</p>
+                </article>
+                <article class="result_item">
+                    <span class="result_year">١٩٧٩</span>
+                    <h3>معاهدة السلام</h3>
+                    <p>وقعت مصر وإسرائيل المعاهدة، وحددت جدول الانسحاب من سيناء.</p>
+                </article>
+                <article class="result_item">
+                    <span class="result_year">١٩٨٢</span>
+                    <h3>عودة سيناء</h3>
+                    <p>اكتمل الانسحاب في ٢٥ أبريل ما عدا منطقة طابا.</p>
+                </article>
+                <article class="result_item">
+                    <span class="result_year">١٩٨٩</span>
+                    <h3>عودة طابا</h3>
+                    <p>رُفع العلم المصري على طابا في ١٩ مارس بعد تحكيم دولي.</p>
+                </article>
+            </div>
+        </section>
+
+        <!--المعرض-->
+        <section class="sec" id="gallery">
+            <h2 class="section-title">معرض الصور</h2>
+            <div class="gallery_box">
+                <figure class="gallery_item"><img src="" alt="لحظة العبور"><figcaption>لحظة العبور</figcaption></figure>
+                <figure class="gallery_item"><img src="" alt="الكباري على القناة"><figcaption>الكباري على القناة</figcaption></figure>
+                <figure class="gallery_item"><img src="" alt="المقاتلات"><figcaption>المقاتلات</figcaption></figure>
+                <figure class="gallery_item"><img src="" alt="الدبابات"><figcaption>الدبابات</figcaption></figure>
+                <figure class="gallery_item"><img src="" alt="رفع العلم"><figcaption>رفع العلم</figcaption></figure>
+                <figure class="gallery_item"><img src="" alt="القادة"><figcaption>القادة</figcaption></figure>
+            </div>
+        </section>
+
+        <!--الاختبار-->
+        <section class="sec" id="quiz">
+            <h2 class="section-title">اختبر نفسك</h2>
+            <div class="quiz_box" id="quizBox"></div>
+        </section>
+
+        <!--المصادر-->
+        <section class="sec" id="sources">
+            <h2 class="section-title">المصادر</h2>
+            <ul class="sources_list">
+                <li>كتاب التاريخ المدرسي</li>
+                <li>مذكرات حرب أكتوبر، الفريق سعد الدين الشاذلي</li>
+                <li>مذكرات الجمسي: حرب أكتوبر ١٩٧٣، المشير محمد عبد الغني الجمسي</li>
+                <li>الهيئة العامة للاستعلامات (sis.gov.eg)</li>
+            </ul>
+        </section>
     </main>
+
+    <!--نافذة التفاصيل-->
+    <div class="modal" id="modal" aria-hidden="true">
+        <div class="modal_card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal_close" id="modalClose" aria-label="إغلاق">&times;</button>
+            <h2 id="modalTitle"></h2>
+            <p id="modalText"></p>
+        </div>
+    </div>
 
     <footer>
         <p>انتصارات أكتوبر &copy; SOFTWEB</p>

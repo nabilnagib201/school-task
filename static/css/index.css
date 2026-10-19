@@ -235,3 +235,546 @@ img[src=""] {
         box-shadow: 0 6px 16px rgba(243, 156, 18, 0.35), 0 0 0 16px rgba(243, 156, 18, 0);
     }
 }
+
+/* ========================================================== */
+/* ================= الأقسام الجديدة ======================== */
+/* ========================================================== */
+
+.sec {
+    padding: 90px 5% 30px;
+}
+
+.cards_grid {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 28px;
+}
+
+/* ---------- بطاقات المعلومات (الأسباب والمعارك) ---------- */
+.info_item {
+    background: #fff;
+    border-radius: 15px;
+    padding: 28px 24px;
+    border-top: 5px solid var(--main-blue);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.battles_box .info_item {
+    border-top-color: var(--main-orange);
+}
+
+.info_item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.info_item h3,
+.result_item h3 {
+    margin: 0 0 8px;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--main-blue);
+}
+
+.info_item p,
+.result_item p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.tag {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 2px 14px;
+    border-radius: 20px;
+    background: rgba(243, 156, 18, 0.15);
+    color: var(--dark-orange);
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+/* ---------- الجدول الزمني ---------- */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+/* الخط الوسطي يُرسم من الأعلى إلى الأسفل */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    border-radius: 4px;
+    background: linear-gradient(var(--main-orange), var(--main-blue));
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    transition: transform 1.8s var(--ease);
+}
+
+.timeline.in::before {
+    transform: translateX(-50%) scaleY(1);
+}
+
+.tl_item {
+    position: relative;
+    width: calc(50% - 40px);
+    padding: 20px 24px;
+    background: #fff;
+    border-radius: 15px;
+    border-top: 5px solid var(--main-blue);
+    box-shadow: var(--shadow-sm);
+    --dx: 60px;
+}
+
+.tl_item:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.tl_item:nth-child(even) {
+    align-self: flex-end;
+    border-top-color: var(--main-orange);
+    --dx: -60px;
+}
+
+.tl_item.reveal.in {
+    animation-name: revealX;
+}
+
+/* النقطة على الخط */
+.tl_item::after {
+    content: '';
+    position: absolute;
+    top: 26px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--main-orange);
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 3px var(--main-blue);
+}
+
+.tl_item:nth-child(odd)::after {
+    left: -49px;
+}
+
+.tl_item:nth-child(even)::after {
+    right: -49px;
+}
+
+.tl_date {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 800;
+    color: var(--dark-orange);
+}
+
+.tl_item h3 {
+    margin: 0 0 6px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--main-blue);
+}
+
+.tl_item p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* ---------- الأسلحة (قسم داكن) ---------- */
+.sec_dark {
+    margin-top: 70px;
+    padding-bottom: 90px;
+    background: linear-gradient(135deg, var(--deep-blue), var(--main-blue));
+    border-top: 4px solid var(--main-orange);
+}
+
+.sec_dark .section-title {
+    color: #fff;
+}
+
+.weapon_item {
+    padding: 26px 24px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transition: transform 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s var(--ease);
+}
+
+.weapon_item:hover {
+    transform: translateY(-8px);
+    border-color: var(--main-orange);
+    box-shadow: 0 14px 34px rgba(243, 156, 18, 0.25);
+}
+
+.weapon_item h3 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--gold);
+}
+
+.weapon_item p {
+    margin: 0;
+    color: #cfdcea;
+}
+
+/* ---------- النتائج ---------- */
+.result_item {
+    padding: 28px 24px;
+    text-align: center;
+    background: #fff;
+    border-radius: 15px;
+    border-bottom: 5px solid var(--main-orange);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.result_item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.result_year {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--main-orange), var(--dark-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ---------- المعرض ---------- */
+.gallery_box {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.gallery_item {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #e3ebf4, #f6e3bd);
+    box-shadow: var(--shadow-sm);
+}
+
+.gallery_item::before {
+    content: '★';
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 3.5rem;
+    color: rgba(0, 51, 102, 0.18);
+}
+
+.gallery_item img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease);
+}
+
+.gallery_item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery_item figcaption {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 30px 16px 14px;
+    color: #fff;
+    font-weight: 600;
+    background: linear-gradient(transparent, rgba(0, 26, 51, 0.85));
+    transform: translateY(100%);
+    transition: transform 0.45s var(--ease);
+}
+
+.gallery_item:hover figcaption {
+    transform: none;
+}
+
+/* على الجوال لا يوجد hover فيظهر الوصف دائما */
+@media (hover: none) {
+    .gallery_item figcaption {
+        transform: none;
+    }
+}
+
+/* ---------- الاختبار ---------- */
+.quiz_box {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px;
+    background: #fff;
+    border-radius: 15px;
+    border-top: 5px solid var(--main-orange);
+    box-shadow: var(--shadow-sm);
+}
+
+.quiz_bar {
+    height: 6px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #e5ebf2;
+}
+
+.quiz_bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--dark-orange), var(--main-orange));
+    transition: width 0.6s var(--ease);
+}
+
+.quiz_count {
+    margin: 0 0 18px;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+.quiz_q {
+    margin: 0 0 16px;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--main-blue);
+}
+
+.quiz_step {
+    animation: heroIn 0.5s var(--ease) both;
+}
+
+.quiz_opt {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 18px;
+    text-align: right;
+    color: var(--main-blue);
+    background: #f2f6fa;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+.quiz_opt::before {
+    display: none;
+}
+
+.quiz_opt:hover:not(:disabled) {
+    transform: translateX(-6px);
+    border-color: var(--main-orange);
+    box-shadow: none;
+}
+
+.quiz_opt:disabled {
+    cursor: default;
+}
+
+.quiz_opt.correct {
+    color: #1d6b3c;
+    background: #e6f6ec;
+    border-color: #2e9e5b;
+}
+
+.quiz_opt.wrong {
+    color: #9b2c2c;
+    background: #fdecec;
+    border-color: #d64545;
+    animation: shake 0.4s;
+}
+
+.quiz_next {
+    margin-top: 14px;
+}
+
+.quiz_score {
+    margin: 10px 0;
+    font-size: 3.4rem;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(135deg, var(--main-orange), var(--dark-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.quiz_msg {
+    margin: 0 0 18px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.quiz_end {
+    text-align: center;
+}
+
+@keyframes shake {
+
+    25% {
+        transform: translateX(8px);
+    }
+
+    50% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* ---------- المصادر ---------- */
+.sources_list {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.sources_list li {
+    position: relative;
+    margin-bottom: 12px;
+    padding: 14px 44px 14px 18px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    color: var(--main-blue);
+    font-weight: 600;
+}
+
+.sources_list li::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--main-orange);
+    transform: translateY(-50%);
+}
+
+/* ---------- نافذة التفاصيل ---------- */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(0, 26, 51, 0.7);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal_card {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    padding: 34px 30px 30px;
+    background: #fff;
+    border-top: 5px solid var(--main-orange);
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    transform: scale(0.9) translateY(24px);
+    transition: transform 0.45s var(--ease);
+}
+
+.modal.open .modal_card {
+    transform: none;
+}
+
+.modal_card h2 {
+    margin: 0 0 10px;
+    font-weight: 800;
+    color: var(--main-blue);
+}
+
+.modal_card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.modal_close {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--main-blue);
+    background: #eef2f7;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.modal_close::before {
+    display: none;
+}
+
+body.no_scroll {
+    overflow: hidden;
+}
+
+/* ---------- جوال ---------- */
+@media (max-width: 760px) {
+    .timeline {
+        padding-right: 44px;
+    }
+
+    .timeline::before {
+        left: auto;
+        right: 12px;
+        transform: scaleY(0);
+    }
+
+    .timeline.in::before {
+        transform: scaleY(1);
+    }
+
+    .tl_item {
+        width: 100%;
+        align-self: stretch !important;
+        --dx: 60px !important;
+    }
+
+    .tl_item::after {
+        left: auto !important;
+        right: -39px !important;
+    }
+
+    .quiz_box {
+        padding: 22px;
+    }
+}
