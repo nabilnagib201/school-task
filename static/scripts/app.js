@@ -1,3 +1,4 @@
+console.log("app.js is running...");
 (function () {
     'use strict';
 
@@ -97,9 +98,12 @@
         if (lastFocus) lastFocus.focus();
     }
 
+    /* الزر الذي فيه data-title يفتح النافذة (التنقل بين الصفحات في index.js) */
     document.querySelectorAll('.leaders_item button, .plan_item button').forEach(function (btn) {
         btn.addEventListener('click', function () {
-            openModal(btn.dataset.title, btn.dataset.text);
+            if (btn.dataset.title) {
+                openModal(btn.dataset.title, btn.dataset.text);
+            }
         });
     });
     modalClose.addEventListener('click', closeModal);
@@ -240,5 +244,5 @@
         if (video.networkState === 3) missing();
     });
 
-    renderQuestion();
+    if (box) renderQuestion();
 })();
