@@ -19,7 +19,7 @@ console.log("app.js is running...");
 
     /* ========== 2) ظهور العناصر تدريجيا عند التمرير ========== */
     var selector = '.section-title, .leaders_item, .plan_item, .info_item, .tl_item, ' +
-        '.weapon_item, .result_item, .gallery_item, .quiz_box, .sources_list li';
+        '.weapon_item, .result_item, .gallery_item, .quiz_box, .sources_list li, .travel .box_item, .we .box_item, .film .box_item, .link_box';
     var targets = document.querySelectorAll(selector);
 
     targets.forEach(function (el) {
@@ -53,7 +53,8 @@ console.log("app.js is running...");
     /* ========== 3) تمييز رابط القسم الحالي ========== */
     var links = document.querySelectorAll('.link_item');
     var sections = Array.prototype.map.call(links, function (a) {
-        return document.querySelector(a.getAttribute('href'));
+        var href = a.getAttribute('href');
+        return href.charAt(0) === '#' ? document.getElementById(href.slice(1)) : null;
     });
 
     if ('IntersectionObserver' in window) {
@@ -80,11 +81,13 @@ console.log("app.js is running...");
     var modalText = document.getElementById('modalText');
     var modalClose = document.getElementById('modalClose');
     var lastFocus = null;
+    var modalSource = null;
 
     function openModal(title, text) {
+        modalSource = { title: title, text: text };
         lastFocus = document.activeElement;
-        modalTitle.textContent = title;
-        modalText.textContent = text;
+        modalTitle.textContent = window.siteI18n.t(title);
+        modalText.textContent = window.siteI18n.t(text);
         modal.classList.add('open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('no_scroll');
@@ -95,14 +98,24 @@ console.log("app.js is running...");
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('no_scroll');
+        modalSource = null;
         if (lastFocus) lastFocus.focus();
     }
+
+    document.addEventListener('languagechange', function () {
+        if (!modalSource) return;
+        modalTitle.textContent = window.siteI18n.t(modalSource.title);
+        modalText.textContent = window.siteI18n.t(modalSource.text);
+    });
 
     /* الزر الذي فيه data-title يفتح النافذة (التنقل بين الصفحات في index.js) */
     document.querySelectorAll('.leaders_item button, .plan_item button').forEach(function (btn) {
         btn.addEventListener('click', function () {
             if (btn.dataset.title) {
-                openModal(btn.dataset.title, btn.dataset.text);
+                openModal(
+                    window.siteI18n.originalAttribute(btn, 'data-title'),
+                    window.siteI18n.originalAttribute(btn, 'data-text')
+                );
             }
         });
     });
@@ -137,8 +150,10 @@ console.log("app.js is running...");
         return a;
     }
 
-    function toArabic(n) {
-        return String(n).replace(/\d/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; });
+    function localizeNumber(n) {
+        return window.siteI18n.language === 'ar'
+            ? String(n).replace(/\d/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; })
+            : String(n);
     }
 
     function renderQuestion() {
@@ -151,9 +166,11 @@ console.log("app.js is running...");
         step.className = 'quiz_step';
         step.innerHTML =
             '<div class="quiz_bar"><span style="width:' + progress + '%"></span></div>' +
-            '<p class="quiz_count">السؤال ' + toArabic(current + 1) + ' من ' + toArabic(QUESTIONS.length) + '</p>' +
+            '<p class="quiz_count">' + window.siteI18n.t('السؤال') + ' ' +
+            localizeNumber(current + 1) + ' ' + window.siteI18n.t('من') + ' ' +
+            localizeNumber(QUESTIONS.length) + '</p>' +
             '<h3 class="quiz_q"></h3><div class="quiz_opts"></div>';
-        step.querySelector('.quiz_q').textContent = item.q;
+        step.querySelector('.quiz_q').textContent = window.siteI18n.t(item.q);
         box.appendChild(step);
 
         var optsBox = step.querySelector('.quiz_opts');
@@ -162,14 +179,14 @@ console.log("app.js is running...");
         shuffle(item.o).forEach(function (text) {
             var b = document.createElement('button');
             b.className = 'quiz_opt';
-            b.textContent = text;
+            b.textContent = window.siteI18n.t(text);
             b.addEventListener('click', function () {
                 if (answered) return;
                 answered = true;
                 var all = optsBox.querySelectorAll('.quiz_opt');
                 all.forEach(function (x) {
                     x.disabled = true;
-                    if (x.textContent === correct) x.classList.add('correct');
+                    if (x.textContent === window.siteI18n.t(correct)) x.classList.add('correct');
                 });
                 if (text === correct) {
                     score++;
@@ -180,7 +197,9 @@ console.log("app.js is running...");
 
                 var next = document.createElement('button');
                 next.className = 'btn quiz_next';
-                next.textContent = current === QUESTIONS.length - 1 ? 'عرض النتيجة' : 'السؤال التالي';
+                next.textContent = window.siteI18n.t(
+                    current === QUESTIONS.length - 1 ? 'عرض النتيجة' : 'السؤال التالي'
+                );
                 next.addEventListener('click', function () {
                     current++;
                     if (current < QUESTIONS.length) renderQuestion(); else renderResult();
@@ -198,15 +217,23 @@ console.log("app.js is running...");
         box.innerHTML =
             '<div class="quiz_step quiz_end">' +
             '<div class="quiz_bar"><span style="width:100%"></span></div>' +
-            '<div class="quiz_score">' + toArabic(score) + ' / ' + toArabic(QUESTIONS.length) + '</div>' +
-            '<p class="quiz_msg">' + msg + '</p>' +
-            '<button class="btn" id="quizRestart">إعادة الاختبار</button></div>';
+            '<div class="quiz_score">' + localizeNumber(score) + ' / ' + localizeNumber(QUESTIONS.length) + '</div>' +
+            '<p class="quiz_msg">' + window.siteI18n.t(msg) + '</p>' +
+            '<button class="btn" id="quizRestart">' + window.siteI18n.t('إعادة الاختبار') + '</button></div>';
         document.getElementById('quizRestart').addEventListener('click', function () {
             current = 0;
             score = 0;
             renderQuestion();
         });
     }
+
+    document.addEventListener('languagechange', function () {
+        if (box) {
+            current = 0;
+            score = 0;
+            renderQuestion();
+        }
+    });
 
     /* ========== 6) مقاطع الفيديو ========== */
     /* DEBUG = true يعرض سبب تعذر التشغيل داخل الصفحة. غيّرها إلى false عند التسليم */
@@ -222,22 +249,30 @@ console.log("app.js is running...");
             film.classList.add('empty');
             video.style.display = 'none';
 
-            var text = 'مقطع أرشيفي';
+            var sourceText = 'مقطع أرشيفي';
             if (DEBUG) {
                 var code = video.error ? video.error.code : 0;
                 var why = code === 3 ? 'الملف موجود لكن تالف أو ترميزه غير مدعوم (حوّله إلى mp4 بترميز H.264)'
                     : code === 2 ? 'خطأ في الشبكة أثناء التحميل'
                         : 'الملف غير موجود في هذا المسار، أو صيغته غير مدعومة';
-                text = 'تعذر تشغيل الفيديو\n' + why + '\n' + decodeURI(video.getAttribute('src'));
+                sourceText = 'تعذر تشغيل الفيديو\n' + why + '\n' + decodeURI(video.getAttribute('src'));
             }
 
             var label = document.createElement('span');
             label.className = 'film_label';
-            label.textContent = text;
+            label.dataset.sourceText = sourceText;
             label.style.cssText = 'position:absolute;inset:0;z-index:3;display:grid;place-items:center;' +
-                'padding:16px;text-align:center;white-space:pre-line;direction:rtl;' +
+                'padding:16px;text-align:center;white-space:pre-line;' +
                 'color:#ddd;font-size:0.85rem;line-height:1.8;word-break:break-all';
             screen.appendChild(label);
+            function updateLabel() {
+                label.textContent = sourceText.split('\n').map(window.siteI18n.t).join('\n');
+                label.style.direction = window.siteI18n.language === 'en' ? 'ltr' : 'rtl';
+            }
+            updateLabel();
+            document.addEventListener('languagechange', function () {
+                updateLabel();
+            });
         }
 
         video.addEventListener('error', missing);

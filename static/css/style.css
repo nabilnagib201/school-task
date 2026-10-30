@@ -77,8 +77,36 @@ header.scrolled {
     letter-spacing: 1px;
 }
 
-.logo span {
+.logo {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo span,span {
     color: var(--main-orange);
+}
+
+.language_toggle {
+    flex: 0 0 auto;
+    padding: 6px 14px;
+    color: var(--main-blue);
+    background: #eef3f8;
+    border: 1px solid rgba(0, 51, 102, 0.14);
+    border-radius: 20px;
+    box-shadow: none;
+    font-size: 0.85rem;
+}
+
+.language_toggle::before {
+    display: none;
+}
+
+.language_toggle:hover {
+    color: #fff;
+    background: var(--main-blue);
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
 }
 
 nav {
@@ -101,7 +129,8 @@ nav {
     color: var(--main-blue);
     font-weight: 600;
     white-space: nowrap;
-    padding: 6px 10px;
+    padding: 6px clamp(6px, 0.75vw, 10px);
+    font-size: clamp(0.82rem, 1vw, 1rem);
     transition: color 0.3s;
 }
 
@@ -251,14 +280,22 @@ footer p {
 }
 
 /* ========== جوال ========== */
-@media (max-width: 640px) {
+@media (max-width: 900px) {
     header {
         flex-direction: column;
-        gap: 6px;
+        gap: 8px;
+        padding: 14px 5%;
     }
 
     nav {
         width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        gap: 6px;
+        padding: 12px 4%;
     }
 
     .section-title {

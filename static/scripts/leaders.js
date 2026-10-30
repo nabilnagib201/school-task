@@ -53,6 +53,7 @@
     var modalText = document.getElementById('modalText');
     var modalClose = document.getElementById('modalClose');
     var lastFocus = null;
+    var activeDetails = null;
 
     document.querySelectorAll('[data-leader-id]').forEach(function (button) {
         button.addEventListener('click', function () {
@@ -63,8 +64,9 @@
             }
 
             lastFocus = button;
-            modalTitle.textContent = details.title;
-            modalText.textContent = details.text;
+            activeDetails = details;
+            modalTitle.textContent = window.siteI18n.t(details.title);
+            modalText.textContent = window.siteI18n.t(details.text);
             modal.hidden = false;
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
@@ -73,10 +75,17 @@
         });
     });
 
+    document.addEventListener('languagechange', function () {
+        if (!activeDetails) return;
+        modalTitle.textContent = window.siteI18n.t(activeDetails.title);
+        modalText.textContent = window.siteI18n.t(activeDetails.text);
+    });
+
     function closeModal() {
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('no_scroll');
+        activeDetails = null;
         if (lastFocus) lastFocus.focus();
     }
 
