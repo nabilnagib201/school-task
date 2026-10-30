@@ -19,25 +19,19 @@
     <header>
 
         <!--شعار-->
-        <div class="logo">
+        <div class="logo" onclick="window.location.href='https://www.instagram.com/soft_wep/'">
             <h1>SOFT<span>WEB</span></h1>
+            <button class="language_toggle" type="button" data-language-toggle aria-label="تغيير اللغة">English</button>
         </div>
 
         <!--links روابط-->
         <nav>
             <div class="link_box">
                 <a class="link_item" href="#word">الرئيسية</a>
-                <a class="link_item" href="#causes">الأسباب</a>
-                <a class="link_item" href="#leaders">القادة</a>
-                <a class="link_item" href="#plans">الخطط</a>
-                <a class="link_item" href="#timeline">الجدول الزمني</a>
+                <a class="link_item" href="#intro">مقدمة</a>
+                <a class="link_item" href="#causes">أسباب الحرب</a>
                 <a class="link_item" href="#battles">المعارك</a>
-                <a class="link_item" href="#weapons">الأسلحة</a>
-                <a class="link_item" href="#results">النتائج</a>
-                <a class="link_item" href="#gallery">المعرض</a>
-                <a class="link_item" href="#quiz">اختبر نفسك</a>
                 <a class="link_item" href="#we">من نحن</a>
-
             </div>
         </nav>
     </header>
@@ -47,112 +41,47 @@
         <section class="word" id="word">
             <div class="word_box">
                 <h1 class="word_item">
-                    <span class="word_gold">ملحمة أكتوبر</span>
-                    <span class="word_white">المجيدة</span>
+                    <span class="word_gold">حروب</span>
+                    <span class="word_white">خلدت التاريخ</span>
                 </h1>
-                <p class="word_sub">السادس من أكتوبر ١٩٧٣</p>
-                <a class="btn" href="#causes">ابدأ الرحلة</a>
+                <p class="word_sub">يُذكر فيها أبرز الحروب التي شهدتها المنطقة</p>
+                <a class="btn" href="#intro">ابدأ الرحلة</a>
             </div>
+        </section>
+
+        <!--مقدمة-->
+        <section class="sec" id="intro">
+            <h2 class="section-title">مقدمة</h2>
+            <p>في عام 1948 قام الإسرائيليون بإنشاء دولة إسرائيل <span>على أراضي فلسطين،</span> مما أدى إلى الصراع العربي-الإسرائيلي. وخلال هذه الحرب، <span>احتلت القوات الإسرائيلية معظم الأراضي الفلسطينية</span>، وأصبحت المنطقة منطقة متنازع عليها.</p>
+            <p>في عام 1956 قامت بريطانيا وفرنسا واسرائيل بشن حرب على مصر، <span>في محاولة لاستعادة السيطرة على قناة السويس و قطع الامدادت عن الجزائر و التوسع</span>. <span>لكن تمكن المصريين من تحقيق انتصارات</span>، و الحرب انتهت بوقف إطلاق النار دون تحقيق أهداف العدوان بالكامل , و <span>ظلت قناه السويس تابعه لمصر و استقلت الجزائر</span>.</p>
+            <p>في عام 1967، قامت إسرائيل بشن حرب على الدول العربية المجاورة، <span>واحتلت خلالها أراضٍ واسعة</span>، بما في ذلك الضفة الغربية وقطاع غزة وسيناء والجولان. <span>تسببت هذه الحرب في تهجير العديد من الفلسطينيين</span>، وأدت إلى استمرار النزاع العربي-الإسرائيلي.</p>
+            <p>في عام 1973، قامت مصر وسوريا بشن حرب على إسرائيل، <span>في محاولة لاستعادة الأراضي المحتلة</span>. <span>تمكنت القوات العربية من تحقيق بعض الانتصارات</span>، ولكن الحرب انتهت بوقف إطلاق النار دون تحقيق أهدافها بالكامل.</p>
         </section>
 
         <!--أسباب الحرب-->
         <section class="sec" id="causes">
-            <h2 class="section-title">لماذا قامت الحرب؟</h2>
+            <h2 class="section-title">الاحداث</h2>
             <div class="cards_grid">
                 <article class="info_item">
-                    <h3>هزيمة ١٩٦٧</h3>
-                    <p>احتلت إسرائيل سيناء والجولان والضفة الغربية وقطاع غزة، وأصبحت قناة السويس خط المواجهة.</p>
+                    <h3>الصراع العربي-الإسرائيلي 1948</h3>
+                    <p>قيام دوله علي ارض دوله اخري ادي الي تحريك و غليان دماء العرب.</p>
+                    <button class="btn-war" type="button" id="arabWar">تعرف علي مزيد</button>
                 </article>
                 <article class="info_item">
-                    <h3>حرب الاستنزاف</h3>
-                    <p>من ١٩٦٧ إلى ١٩٧٠ استمرت المعارك على ضفتي القناة، وأعادت للجيش ثقته بنفسه.</p>
+                    <h3>العدوان الثلاثي - 1956</h3>
+                    <p>شن هجوم علي مصر في من تحالف ثلاثي هو بريطانيا , فرنسا , اسرائيل.</p>
+                    <button class="btn-war" type="button" id="threeWarsWay">تعرف علي مزيد</button>
                 </article>
                 <article class="info_item">
-                    <h3>انسداد الحلول السياسية</h3>
-                    <p>ظلت الأرض محتلة رغم المحاولات السياسية، فتأكدت القيادة أن استعادتها تحتاج إلى القوة.</p>
+                    <h3>العدوان الاسرائيلي - 1967</h3>
+                    <p>الغزو الاسرائيلي لمصر و بعض المناطق المجاورة لها.</p>
+                    <button class="btn-war" type="button" id="israelWar">تعرف علي مزيد</button>
                 </article>
                 <article class="info_item">
-                    <h3>إعادة بناء الجيش</h3>
-                    <p>ست سنوات من التدريب المكثف والتسليح الجديد ووضع الخطط الدقيقة.</p>
+                    <h3>حرب اكتوبر - 1973</h3>
+                    <p>محاربه مصر و سوريا لاسرائيل و استعاده الشرف من نكسه 1967 و وضع معاهده سلام تمنع الحرب.</p>
+                    <button class="btn-war" type="button" id="OctobarWar">تعرف علي مزيد</button>
                 </article>
-            </div>
-        </section>
-
-        <!--القاده-->
-        <section class="leaders_section" id="leaders">
-            <h2 class="section-title">قادة النصر</h2>
-            <div class="leaders_box">
-                <div class="leaders_item">
-                    <div class="leaders_img"><img src="static/img/leaders/elsadat.jpg" class="leaders_photo"
-                            alt="أنور السادات"></div>
-                    <div class="leaders_string">
-                        <h1>أنور السادات</h1>
-                        <p>صاحب قرار الحرب</p>
-                    </div>
-                    <button id="btn-Leader-elsadat">دخول الان</button>
-                </div>
-
-                <div class="leaders_item">
-                    <div class="leaders_img"><img src="static/img/leaders/a7med_asma3il_3li.jpg" class="leaders_photo"
-                            alt="أحمد إسماعيل علي"></div>
-                    <div class="leaders_string">
-                        <h1>أحمد إسماعيل علي</h1>
-                        <p>وزير الحربية والقائد العام</p>
-                    </div>
-                    <button id="btn-Leader-a7med">دخول الان</button>
-                </div>
-
-                <div class="leaders_item">
-                    <div class="leaders_img"><img src="static/img/leaders/sa3d_eldin_elshazli.jpg" class="leaders_photo"
-                            alt="سعد الدين الشاذلي"></div>
-                    <div class="leaders_string">
-                        <h1>سعد الدين الشاذلي</h1>
-                        <p>رئيس أركان حرب القوات المسلحة</p>
-                    </div>
-                    <button id="btn-Leader-sa3d">دخول الان</button>
-                </div>
-            </div>
-        </section>
-
-        <!--الخطط-->
-        <section class="plans_section" id="plans">
-            <h2 class="section-title">الخطط العسكرية</h2>
-            <div class="plan_box">
-                <div class="plan_item">
-                    <div class="plan_photo"><img src="static/img/plan/badr.jpg" class="plan_img" alt="العملية بدر">
-                    </div>
-                    <div class="plan_string">
-                        <h1>العملية بدر</h1>
-                        <p>خطة العبور واقتحام خط بارليف</p>
-                    </div>
-                    <button data-title="العملية بدر"
-                        data-text="الخطة الأساسية لعبور قناة السويس. بدأت بضربة جوية ثم عبور المشاة بالقوارب المطاطية، وبعدها أقيمت الكباري لعبور الدبابات والمعدات وتثبيت رؤوس كباري شرق القناة.">دخول
-                        الان</button>
-                </div>
-
-                <div class="plan_item">
-                    <div class="plan_photo"><img src="static/img/plan/el5da3.jpg" class="plan_img"
-                            alt="الخداع الاستراتيجي"></div>
-                    <div class="plan_string">
-                        <h1>الخداع الاستراتيجي</h1>
-                        <p>إخفاء موعد الحرب عن العدو</p>
-                    </div>
-                    <button data-title="الخداع الاستراتيجي"
-                        data-text="إجراءات لإخفاء موعد الحرب: مناورات متكررة اعتاد عليها العدو، وإظهار الاستعدادات بشكل عادي، واختيار توقيت غير متوقع هو ٦ أكتوبر، وكان في رمضان وفي عيد الغفران عند اليهود.">دخول
-                        الان</button>
-                </div>
-
-                <div class="plan_item">
-                    <div class="plan_photo"><img src="static/img/plan/7at_el_soari5.jpg" class="plan_img"
-                            alt="حائط الصواريخ"></div>
-                    <div class="plan_string">
-                        <h1>حائط الصواريخ</h1>
-                        <p>حماية القوات من الطيران</p>
-                    </div>
-                    <button data-title="حائط الصواريخ"
-                        data-text="شبكة من صواريخ الدفاع الجوي أقيمت غرب القناة لحماية القوات العابرة من الضربات الجوية، إلى جانب الصواريخ المضادة للدبابات مع المشاة.">دخول
-                        الان</button>
-                </div>
             </div>
         </section>
 
@@ -217,7 +146,8 @@
                     <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
                     <figure class="film">
                         <div class="film_screen">
-                            <img class="film_media" src="static/img/moments/FLAG_POLICY_DURING_THE_1973_oil_crisis.gif" alt="سلاح البترول">
+                            <img class="film_media" src="static/img/moments/FLAG_POLICY_DURING_THE_1973_oil_crisis.gif"
+                                alt="سلاح البترول">
                         </div>
                         <figcaption class="film_caption">إعلان الدول العربية خفض إنتاج النفط وحظره عن الدول الداعمة
                             لإسرائيل.</figcaption>
@@ -229,7 +159,7 @@
                     <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
                     <figure class="film">
                         <div class="film_screen">
-                            <img class="film_media" src="static/img/moments/338.jpg"></img>
+                            <img class="film_media" src="static/img/moments/338.jpg" alt="قرار مجلس الأمن ٣٣٨">
                         </div>
                         <figcaption class="film_caption">مجلس الأمن يصدر قرارا بوقف إطلاق النار.</figcaption>
                     </figure>
@@ -240,7 +170,9 @@
                     <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
                     <figure class="film">
                         <div class="film_screen">
-                            <img class="film_media" src="static/img/moments/Camp_David,_Menachem_Begin,_Anwar_Sadat,_1978.jpg" alt="وقف إطلاق النار">
+                            <img class="film_media"
+                                src="static/img/moments/Camp_David,_Menachem_Begin,_Anwar_Sadat,_1978.jpg"
+                                alt="وقف إطلاق النار">
                         </div>
                         <figcaption class="film_caption">توقف القتال على الجبهة المصرية بعد قرار جديد من مجلس الأمن.
                         </figcaption>
@@ -375,6 +307,7 @@
             <div class="quiz_box" id="quizBox"></div>
         </section>
 
+        <!--من نحن-->
         <section class="leaders_section" id="we">
             <h2 class="section-title">من نحن</h2>
             <div class="leaders_box">
@@ -443,8 +376,10 @@
         <p>انتصارات أكتوبر &copy; SOFTWEB</p>
     </footer>
 
-    <script src="static/scripts/app.js"></script>
-    <script src="static/scripts/index.js"></script>
+    <script src="static/scripts/i18n.js"></script> <!--ترجمه-->
+    <script src="static/scripts/app.js"></script> <!--اعدادات عامه-->
+    <script src="static/scripts/index.js"></script> <!--تنقلات خاصه-->
+    <script src="static/scripts/travel.js"></script> <!--تنقلات عامه-->
 </body>
 
 </html>
