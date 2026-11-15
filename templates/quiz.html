@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة تحدي نصر أكتوبر 1973</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap">
+    <link rel="icon" href="static/img/softWebLogo.png">
+    <!-- التنسيقات العامة للموقع ثم تنسيقات صفحة الاختبار -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/quiz.css">
+    <style>
+ 
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <!-- الهيدر -->
+    <div class="header">
+        <h1>🇪🇬 ملحمة أكتوبر 1973</h1>
+        <div class="stats">
+            <div class="badge-stat" onclick="window.location.href='../index.html'" type="button">العودة إلى الصفحة الرئيسية</div>
+            <div class="badge-stat" id="question-counter">السؤال: 1 / 30</div>
+            <div class="badge-stat" id="score-display">النقاط: 0</div>
+        </div>
+    </div>
+
+    <!-- شريط التقدم -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- شاشة البداية -->
+    <div id="start-screen" class="screen">
+        <h2>اختبر معلوماتك في مراحل حرب أكتوبر</h2>
+        <p>تحدٍ مكون من 30 سؤالاً يغطي مراحل التخطيط، العبور، تحطيم خط بارليف، صد الثغرة، وحتى النصر والسلام. اجمع النقاط لتحصل على <strong>وسام النصر</strong> في النهاية!</p>
+        <button class="start-btn" onclick="startGame()">ابدأ التحدي الآن</button>
+    </div>
+
+    <!-- شاشة الأسئلة -->
+    <div id="quiz-screen" class="content hidden">
+        <div class="stage-tag" id="stage-name">المرحلة</div>
+        <div class="question-text" id="question-text">نص السؤال هنا؟</div>
+        <div class="options-grid" id="options-container"></div>
+        <div class="controls">
+            <button class="next-btn" id="next-btn" onclick="nextQuestion()">السؤال التالي ⬅</button>
+        </div>
+    </div>
+
+    <!-- شاشة النتيجة والفوز -->
+    <div id="result-screen" class="screen hidden">
+        <div id="medal-container"></div>
+        <h2 id="result-title">انتهت المعركة!</h2>
+        <p id="result-message">لقد حصلت على...</p>
+        <button class="restart-btn" onclick="startGame()">العب مرة أخرى 🔄</button>
+    </div>
+</div>
+
+<script>
+    // مصفوفة الأسئلة الـ 30 مقسمة حسب مراحل الحرب
+    const questions = [
+        // المرحلة الأولى: الاستعداد والخداع الاستراتيجي
+        { stage: "مرحلة التخطيط والخداع", q: "في أي يوم بالتقويم الهجري اندلعت حرب أكتوبر المجيدة؟", options: ["10 رمضان 1393 هـ", "15 رمضان 1393 هـ", "6 رمضان 1393 هـ", "20 رمضان 1393 هـ"], answer: 0 },
+        { stage: "مرحلة التخطيط والخداع", q: "في أي ساعة بدأت الضربة الجوية المصرية وبدء العمليات؟", options: ["الساعة 12:00 ظهراً", "الساعة 2:05 ظهراً", "الساعة 6:00 صباحاً", "الساعة 4:30 عصراً"], answer: 1 },
+        { stage: "مرحلة التخطيط والخداع", q: "من هو صاحب فكرة استخدام خراطيم المياه المضغوطة لفتح ثغرات في الساتر الترابي؟", options: ["المشير أحمد إسماعيل", "اللواء باقي زكي يوسف", "الفريق سعد الدين الشاذلي", "المشير محمد عبد الغني الجمسي"], answer: 1 },
+        { stage: "مرحلة التخطيط والخداع", q: "ما هي اللغة التي استخدمها الجيش المصري كشفرة سرية في الاتصالات اللاسلكية؟", options: ["اللغة الأمازيغية", "اللغة النوبية", "اللغة القبطية", "اللهجة السيناوية"], answer: 1 },
+        { stage: "مرحلة التخطيط والخداع", q: "من كان رئيس أركان حرب القوات المسلحة المصرية أثناء حرب أكتوبر؟", options: ["الفريق سعد الدين الشاذلي", "المشير أحمد إسماعيل", "الفريق عبد المنعم رياض", "المشير أبو غزالة"], answer: 0 },
+        { stage: "مرحلة التخطيط والخداع", q: "ما الاسم الكودي لخطة اقتحام قناة السويس وتدمير خط بارليف؟", options: ["عملية بدر", "عملية الفجر", "عملية النصر", "عملية العبور"], answer: 0 },
+
+        // المرحلة الثانية: الضربة الجوية والتمهيد النيراني
+        { stage: "الضربة الجوية والتمهيد النيراني", q: "كم عدد الطائرات المصرية التي شاركت في الضربة الجوية الأولى؟", options: ["100 طائرة", "220 طائرة", "150 طائرة", "300 طائرة"], answer: 1 },
+        { stage: "الضربة الجوية والتمهيد النيراني", q: "كم استغرقت مدة التمهيد النيراني بالمدفعية المصرية قبل عبور المشاة؟", options: ["15 دقيقة", "53 دقيقة", "ساعتان", "30 دقيقة"], answer: 1 },
+        { stage: "الضربة الجوية والتمهيد النيراني", q: "من كان قائد القوات الجوية المصرية أثناء حرب أكتوبر 1973؟", options: ["اللواء محمد حسني مبارك", "اللواء مدكور أبو العز", "اللواء علي بغدادي", "اللواء شلبي الحناوي"], answer: 0 },
+        { stage: "الضربة الجوية والتمهيد النيراني", q: "كم مدفعاً مصرياً شارك في التمهيد النيراني لحظة بدء الحرب؟", options: ["أكثر من 2000 مدفع", "500 مدفع", "1000 مدفع", "800 مدفع"], answer: 0 },
+        { stage: "الضربة الجوية والتمهيد النيراني", q: "ما نسبة نجاح الضربة الجوية الأولى وفقاً للتقارير العسكرية؟", options: ["75%", "85%", "95%", "60%"], answer: 2 },
+// المرحلة الثالثة: العبور واقتحام خط بارليف
+// يُرجى استخدام الرمز البرمجي بحذر.
+{ stage: "مرحلة العبور وتحطيم خط بارليف", q: "كم استغرق فتح أول ثغرة في الساتر الترابي لخط بارليف؟", options: ["12 ساعة", "ساعتان فقط", "6 ساعات", "24 ساعة"], answer: 1 },
+{ stage: "مرحلة العبور وتحطيم خط بارليف", q: "كم عدد الجنود المصريين الذين عبروا القناة في الموجات الأولى خلال 6 ساعات؟", options: ["80 ألف مقاتل", "20 ألف مقاتل", "150 ألف مقاتل", "40 ألف مقاتل"], answer: 0 },
+{ stage: "مرحلة العبور وتحطيم خط بارليف", q: "ما اسم الموانع التي وضعها العدو على ضفة القناة لإشعال سطح المياه بالنابالم؟", options: ["أنابيب النابالم الحارقة", "الألغام البحرية", "الشباك الكهربائية", "الحواجز الأسمنتية"], answer: 0 },
+{ stage: "مرحلة العبور وتحطيم خط بارليف", q: "كم كان يبلغ ارتفاع الساتر الترابي لخط بارليف على الضفة الشرقية؟", options: ["من 5 إلى 8 أمتار", "من 20 إلى 22 متراً", "35 متراً", "10 أمتار"], answer: 1 },
+{ stage: "مرحلة العبور وتحطيم خط بارليف", q: "ما اسم اللواء الذي قاد معركة الاستيلاء على النقطة الحصينة (لسان بورتوفيق)؟", options: ["اللواء زغلول فتحي", "العميد عادل يسري", "المقدم إبراهيم الرفاعي", "اللواء فؤاد عزيز غالي"], answer: 0 },
+{ stage: "مرحلة العبور وتحطيم خط بارليف", q: "من هو البطل المصري الذي لُقب بصائد الدبابات ودمر 23 دبابة بمفرده؟", options: ["محمد عبد العاطي", "إبراهيم عبد التواب", "أحمد حمدي", "عاطف السادات"], answer: 0 },
+// المرحلة الرابعة: المعارك الكبرى وتطوير الهجوم
+{ stage: "المعارك البرية والجوية الكبرى", q: "في أي يوم وقعت معركة المنصورة الجوية الشهيرة؟", options: ["14 أكتوبر 1973", "6 أكتوبر 1973", "10 أكتوبر 1973", "22 أكتوبر 1973"], answer: 0 },
+{ stage: "المعارك البرية والجوية الكبرى", q: "كم استمرت معركة المنصورة الجوية التي تعد أطول معركة جوية في التاريخ الحديث؟", options: ["53 دقيقة", "ساعتان", "20 دقيقة", "3 ساعات"], answer: 0 },
+{ stage: "المعارك البرية والجوية الكبرى", q: "من هو قائد اللواء 190 مدرع الإسرائيلي الذي أُسر في سيناء؟", options: ["عساف ياجوري", "أرييل شارون", "موشيه ديان", "حاييم بارليف"], answer: 0 },
+{ stage: "المعارك البرية والجوية الكبرى", q: "ما اسم المضيق البحري الذي أغلقته البحرية المصرية في وجه الملاحة الإسرائيلية؟", options: ["مضيق باب المندب", "مضيق هرمز", "مضيق جبل طارق", "مضيق تيران"], answer: 0 },
+{ stage: "المعارك البرية والجوية الكبرى", q: "أي فرقة مصرية نجحت في تحرير مدينة القنطرة شرق بالكامل؟", options: ["الفرقة 18 مشاة", "الفرقة الثانية مشاة", "الفرقة الرابعة المدرعة", "الفرقة 16 مشاة"], answer: 0 },
+{ stage: "المعارك البرية والجوية الكبرى", q: "من هو قائد سلاح المهندسين الذي استشهد أثناء إشرافه على إنشاء الكباري؟", options: ["اللواء أحمد حمدي", "اللواء شفيق متري سدراك", "العميد إبراهيم الرفاعي", "اللواء نبيل شكري"], answer: 0 },
+// المرحلة الخامسة: الثغرة ووقف إطلاق النار والنتائج
+{ stage: "مرحلة الثغرة ووقف إطلاق النار", q: "في أي منطقة حاولت القوات الإسرائيلية إحداث ثغرة للعبور غرب القناة؟", options: ["الدفرسوار", "رأس العش", "العريش", "شرم الشيخ"], answer: 0 },
+{ stage: "مرحلة الثغرة ووقف إطلاق النار", q: "في أي مدينة صمدت المقاومة الشعبية والجيش ببسالة ومنعت احتلالها في 24 أكتوبر؟", options: ["مدينة السويس", "مدينة بورسعيد", "مدينة الإسماعيلية", "مدينة العريش"], answer: 0 },
+{ stage: "مرحلة الثغرة ووقف إطلاق النار", q: "ما رقم قرار مجلس الأمن الذي دعا لوقف إطلاق النار في 22 أكتوبر 1973؟", options: ["القرار 338", "القرار 242", "القرار 181", "القرار 425"], answer: 0 },
+{ stage: "مرحلة الثغرة ووقف إطلاق النار", q: "ما اسم المعركة التي منعت فيها قوات الصاعقة تقدم شارون نحو مدينة الإسماعيلية؟", options: ["معركة أبو عطوة", "معركة كبريت", "معركة الفردان", "معركة المزرعة الصينية"], answer: 0 },
+{ stage: "مرحلة الثغرة ووقف إطلاق النار", q: "من كان رئيس هيئة عمليات القوات المسلحة المصرية أثناء الحرب؟", options: ["اللواء محمد عبد الغني الجمسي", "الفريق سعد الشاذلي", "اللواء فؤاد نصار", "اللواء محمد علي فهمي"], answer: 0 },
+{ stage: "مرحلة الثغرة ووقف إطلاق النار", q: "في أي عام تم توقيع معاهدة السلام المصرية الإسرائيلية واسترداد سيناء؟", options: ["1979", "1975", "1982", "1977"], answer: 0 },
+{ stage: "مرحلة الثغرة ووقف إطلاق النار", q: "في أي يوم تحتفل مصر بالعيد القومي لتحرير كامل أرض سيناء (عدا طابا)؟", options: ["25 أبريل", "6 أكتوبر", "23 ديسمبر", "18 يونيو"], answer: 0 }
+];
+let currentQuestionIndex = 0;
+let score = 0;
+
+const startScreen = document.getElementById('start-screen');
+const quizScreen = document.getElementById('quiz-screen');
+const resultScreen = document.getElementById('result-screen');
+const questionCounter = document.getElementById('question-counter');
+const scoreDisplay = document.getElementById('score-display');
+const progressBar = document.getElementById('progress-bar');
+const stageNameEl = document.getElementById('stage-name');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainer = document.getElementById('options-container');
+const nextBtn = document.getElementById('next-btn');
+
+function startGame() {
+    currentQuestionIndex = 0;
+    score = 0;
+    updateStats();
+    startScreen.classList.add('hidden');
+    resultScreen.classList.add('hidden');
+    quizScreen.classList.remove('hidden');
+    showQuestion();
+}
+
+function updateStats() {
+    questionCounter.textContent = `السؤال: ${currentQuestionIndex + 1} / ${questions.length}`;
+    scoreDisplay.textContent = `النقاط: ${score}`;
+    const progressPercent = (currentQuestionIndex / questions.length) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+}
+
+function showQuestion() {
+    nextBtn.style.display = 'none';
+    optionsContainer.innerHTML = '';
+    const currentQ = questions[currentQuestionIndex];
+    stageNameEl.textContent = currentQ.stage;
+    questionTextEl.textContent = `${currentQuestionIndex + 1}. ${currentQ.q}`;
+
+    currentQ.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.classList.add('option-btn');
+        button.textContent = option;
+        button.onclick = () => selectAnswer(index, button);
+        optionsContainer.appendChild(button);
+    });
+    updateStats();
+}
+
+function selectAnswer(selectedIndex, selectedButton) {
+    const currentQ = questions[currentQuestionIndex];
+    const allButtons = optionsContainer.querySelectorAll('.option-btn');
+    allButtons.forEach(btn => btn.disabled = true);
+
+    if (selectedIndex === currentQ.answer) {
+        selectedButton.classList.add('correct');
+        score += 10;
+        scoreDisplay.textContent = `النقاط: ${score}`;
+    } else {
+        selectedButton.classList.add('wrong');
+        allButtons[currentQ.answer].classList.add('correct');
+    }
+    nextBtn.style.display = 'inline-block';
+}
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
+    } else {
+        showResults();
+    }
+}
+
+function showResults() {
+    progressBar.style.width = '100%';
+    quizScreen.classList.add('hidden');
+    resultScreen.classList.remove('hidden');
+
+    const maxScore = questions.length * 10;
+    const percentage = Math.round((score / maxScore) * 100);
+    const medalContainer = document.getElementById('medal-container');
+    const resultTitle = document.getElementById('result-title');
+    const resultMessage = document.getElementById('result-message');
+
+    if (percentage >= 50) {
+        medalContainer.innerHTML = `<div class="victory-medal"><div class="icon">🏅</div><div class="medal-title">وسام نجمة سيناء</div></div>`;
+        resultTitle.textContent = "مبروك النصر يا بطل!";
+        resultTitle.style.color = "#28a745";
+        resultMessage.innerHTML = `لقد أتممت جميع مراحل الحرب بنجاح وحصلت على <strong>${score}</strong> من أصل <strong>${maxScore}</strong> نقطة (${percentage}%).`;
+    } else {
+        medalContainer.innerHTML = `<div style="font-size: 4rem; margin-bottom: 10px;">🎖️</div>`;
+        resultTitle.textContent = "حاول مرة أخرى!";
+        resultTitle.style.color = "#ce1126";
+        resultMessage.innerHTML = `لقد حصلت على <strong>${score}</strong> من أصل <strong>${maxScore}</strong> نقطة (${percentage}%).<br>تحتاج إلى 50% على الأقل للحصول على وسام النصر.`;
+    }
+}
+</script>
+</body>
+</html>

@@ -19,8 +19,8 @@
     <header>
 
         <!--شعار-->
-        <div class="logo" onclick="window.location.href='https://www.instagram.com/soft_wep/'">
-            <h1>SOFT<span>WEB</span></h1>
+        <div class="logo">
+            <h1 onclick="window.location.href='https://www.instagram.com/soft_wep/'">SOFT<span>WEB</span></h1>
             <button class="language_toggle" type="button" data-language-toggle aria-label="تغيير اللغة">English</button>
         </div>
 
@@ -29,8 +29,8 @@
             <div class="link_box">
                 <a class="link_item" href="#word">الرئيسية</a>
                 <a class="link_item" href="#intro">مقدمة</a>
-                <a class="link_item" href="#causes">أسباب الحرب</a>
-                <a class="link_item" href="#battles">المعارك</a>
+                <a class="link_item" href="#causes">الاقسام</a>
+                <a class="link_item" href="#quiz">اختبر نفسك</a>
                 <a class="link_item" href="#we">من نحن</a>
             </div>
         </nav>
@@ -52,252 +52,37 @@
         <!--مقدمة-->
         <section class="sec" id="intro">
             <h2 class="section-title">مقدمة</h2>
-            <p>في عام 1948 قام الإسرائيليون بإنشاء دولة إسرائيل <span>على أراضي فلسطين،</span> مما أدى إلى الصراع العربي-الإسرائيلي. وخلال هذه الحرب، <span>احتلت القوات الإسرائيلية معظم الأراضي الفلسطينية</span>، وأصبحت المنطقة منطقة متنازع عليها.</p>
-            <p>في عام 1956 قامت بريطانيا وفرنسا واسرائيل بشن حرب على مصر، <span>في محاولة لاستعادة السيطرة على قناة السويس و قطع الامدادت عن الجزائر و التوسع</span>. <span>لكن تمكن المصريين من تحقيق انتصارات</span>، و الحرب انتهت بوقف إطلاق النار دون تحقيق أهداف العدوان بالكامل , و <span>ظلت قناه السويس تابعه لمصر و استقلت الجزائر</span>.</p>
-            <p>في عام 1967، قامت إسرائيل بشن حرب على الدول العربية المجاورة، <span>واحتلت خلالها أراضٍ واسعة</span>، بما في ذلك الضفة الغربية وقطاع غزة وسيناء والجولان. <span>تسببت هذه الحرب في تهجير العديد من الفلسطينيين</span>، وأدت إلى استمرار النزاع العربي-الإسرائيلي.</p>
-            <p>في عام 1973، قامت مصر وسوريا بشن حرب على إسرائيل، <span>في محاولة لاستعادة الأراضي المحتلة</span>. <span>تمكنت القوات العربية من تحقيق بعض الانتصارات</span>، ولكن الحرب انتهت بوقف إطلاق النار دون تحقيق أهدافها بالكامل.</p>
+            <p>في عام 1948 قام الإسرائيليون بإنشاء دولة إسرائيل <span>على أراضي فلسطين،</span> مما أدى إلى الصراع
+                العربي-الإسرائيلي. وخلال هذه الحرب، <span>احتلت القوات الإسرائيلية معظم الأراضي الفلسطينية</span>،
+                وأصبحت المنطقة منطقة متنازع عليها.</p>
+            <p>في عام 1956 قامت بريطانيا وفرنسا واسرائيل بشن حرب على مصر، <span>في محاولة لاستعادة السيطرة على قناة
+                    السويس و قطع الامدادت عن الجزائر و التوسع</span>. <span>لكن تمكن المصريين من تحقيق انتصارات</span>،
+                و الحرب انتهت بوقف إطلاق النار دون تحقيق أهداف العدوان بالكامل , و <span>ظلت قناه السويس تابعه لمصر و
+                    استقلت الجزائر</span>.</p>
+            <p>في عام 1967، قامت إسرائيل بشن حرب على الدول العربية المجاورة، <span>واحتلت خلالها أراضٍ واسعة</span>، بما
+                في ذلك الضفة الغربية وقطاع غزة وسيناء والجولان. <span>تسببت هذه الحرب في تهجير العديد من
+                    الفلسطينيين</span>، وأدت إلى استمرار النزاع العربي-الإسرائيلي.</p>
+            <p>في عام 1973، قامت مصر وسوريا بشن حرب على إسرائيل، <span>في محاولة لاستعادة الأراضي المحتلة</span>.
+                <span>تمكنت القوات العربية من تحقيق بعض الانتصارات</span>، ولكن الحرب انتهت بوقف إطلاق النار دون تحقيق
+                أهدافها بالكامل.</p>
+            <p>في عام 1979 انسحاب إسرائيل من قطاع غزةو سيناء <span>وقد أدى هذا إلى تغيير كبير في التوازن الإقليمي</span>.</p>
+            <p>في عام 1982, رفع العلم مصري علي طابا مما ادي الي <span>استعادة السيادة الكاملة على سيناء</span>.</p>
         </section>
 
         <!--أسباب الحرب-->
         <section class="sec" id="causes">
-            <h2 class="section-title">الاحداث</h2>
+            <h2 class="section-title">الاقسام</h2>
             <div class="cards_grid">
                 <article class="info_item">
-                    <h3>الصراع العربي-الإسرائيلي 1948</h3>
-                    <p>قيام دوله علي ارض دوله اخري ادي الي تحريك و غليان دماء العرب.</p>
-                    <button class="btn-war" type="button" id="arabWar">تعرف علي مزيد</button>
-                </article>
-                <article class="info_item">
-                    <h3>العدوان الثلاثي - 1956</h3>
-                    <p>شن هجوم علي مصر في من تحالف ثلاثي هو بريطانيا , فرنسا , اسرائيل.</p>
-                    <button class="btn-war" type="button" id="threeWarsWay">تعرف علي مزيد</button>
-                </article>
-                <article class="info_item">
-                    <h3>العدوان الاسرائيلي - 1967</h3>
-                    <p>الغزو الاسرائيلي لمصر و بعض المناطق المجاورة لها.</p>
-                    <button class="btn-war" type="button" id="israelWar">تعرف علي مزيد</button>
+                    <h3>الاسئله</h3>
+                    <p>اختبر نفسك في قسم الاسئله !</p>
+                    <button class="btn-war" type="button" id="quiz-btn-travel">تعرف علي مزيد</button>
                 </article>
                 <article class="info_item">
                     <h3>حرب اكتوبر - 1973</h3>
                     <p>محاربه مصر و سوريا لاسرائيل و استعاده الشرف من نكسه 1967 و وضع معاهده سلام تمنع الحرب.</p>
                     <button class="btn-war" type="button" id="OctobarWar">تعرف علي مزيد</button>
                 </article>
-            </div>
-        </section>
-
-        <!--الجدول الزمني-->
-        <section class="sec" id="timeline">
-            <h2 class="section-title">الجدول الزمني</h2>
-            <div class="timeline">
-                <article class="tl_item">
-                    <span class="tl_date">٦ أكتوبر ١٩٧٣ - الساعة ٢:٠٥ ظهرا</span>
-                    <h3>ساعة الصفر</h3>
-                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
-                    <figure class="film">
-                        <div class="film_screen">
-                            <video class="film_media" src="static/video/sa3eh_el_sifr.mp4" controls preload="metadata"
-                                playsinline></video>
-                        </div>
-                        <figcaption class="film_caption">ضربة جوية مصرية ثم بدء عبور القناة، وفي الوقت نفسه بدأ الهجوم
-                            السوري في الجولان.</figcaption>
-                    </figure>
-                </article>
-                <article class="tl_item">
-                    <span class="tl_date">الأيام الأولى</span>
-                    <h3>تحطيم خط بارليف</h3>
-                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
-                    <figure class="film">
-                        <div class="film_screen">
-                            <video class="film_media" src="static/video/el_5at.mp4" controls preload="metadata"
-                                playsinline></video>
-                        </div>
-                        <figcaption class="film_caption">اقتحام الساتر الترابي بمضخات المياه وتدمير النقاط القوية وإقامة
-                            رؤوس كباري شرق القناة.</figcaption>
-                    </figure>
-                </article>
-                <article class="tl_item">
-                    <span class="tl_date">١٤ أكتوبر</span>
-                    <h3>المنصورة والدبابات</h3>
-                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
-                    <figure class="film">
-                        <div class="film_screen">
-                            <video class="film_media" src="static/video/elmansora.mp4" controls preload="metadata"
-                                playsinline></video>
-                        </div>
-                        <figcaption class="film_caption">معركة المنصورة الجوية في الدلتا، ومعركة الدبابات الكبرى في
-                            سيناء.</figcaption>
-                    </figure>
-                </article>
-                <article class="tl_item">
-                    <span class="tl_date">١٦ أكتوبر</span>
-                    <h3>الثغرة</h3>
-                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
-                    <figure class="film">
-                        <div class="film_screen">
-                            <img class="film_media" src="static/img/moments/1973_sinai_war_maps2-ar.jpg" alt="الثغرة">
-                        </div>
-                        <figcaption class="film_caption">عبور قوة إسرائيلية إلى غرب القناة في منطقة الدفرسوار.
-                        </figcaption>
-                    </figure>
-                </article>
-                <article class="tl_item">
-                    <span class="tl_date">١٧ أكتوبر</span>
-                    <h3>سلاح البترول</h3>
-                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
-                    <figure class="film">
-                        <div class="film_screen">
-                            <img class="film_media" src="static/img/moments/FLAG_POLICY_DURING_THE_1973_oil_crisis.gif"
-                                alt="سلاح البترول">
-                        </div>
-                        <figcaption class="film_caption">إعلان الدول العربية خفض إنتاج النفط وحظره عن الدول الداعمة
-                            لإسرائيل.</figcaption>
-                    </figure>
-                </article>
-                <article class="tl_item">
-                    <span class="tl_date">٢٢ أكتوبر</span>
-                    <h3>قرار ٣٣٨</h3>
-                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
-                    <figure class="film">
-                        <div class="film_screen">
-                            <img class="film_media" src="static/img/moments/338.jpg" alt="قرار مجلس الأمن ٣٣٨">
-                        </div>
-                        <figcaption class="film_caption">مجلس الأمن يصدر قرارا بوقف إطلاق النار.</figcaption>
-                    </figure>
-                </article>
-                <article class="tl_item">
-                    <span class="tl_date">٢٥ أكتوبر</span>
-                    <h3>استقرار وقف إطلاق النار</h3>
-                    <!-- الفيديو: ضع الملف في static/video/ بالاسم الموجود في src -->
-                    <figure class="film">
-                        <div class="film_screen">
-                            <img class="film_media"
-                                src="static/img/moments/Camp_David,_Menachem_Begin,_Anwar_Sadat,_1978.jpg"
-                                alt="وقف إطلاق النار">
-                        </div>
-                        <figcaption class="film_caption">توقف القتال على الجبهة المصرية بعد قرار جديد من مجلس الأمن.
-                        </figcaption>
-                    </figure>
-                </article>
-            </div>
-        </section>
-
-        <!--المعارك-->
-        <section class="sec" id="battles">
-            <h2 class="section-title">أبرز المعارك</h2>
-            <div class="cards_grid battles_box">
-                <article class="info_item">
-                    <span class="tag">٦ أكتوبر</span>
-                    <h3>العبور وتحطيم خط بارليف</h3>
-                    <p>عبرت القوات القناة بالقوارب المطاطية، وفتح المهندسون ثغرات في الساتر الترابي بمضخات المياه، ثم
-                        أقاموا الكباري لعبور المعدات.</p>
-                </article>
-                <article class="info_item">
-                    <span class="tag">٦ أكتوبر</span>
-                    <h3>الجبهة السورية</h3>
-                    <p>هاجمت القوات السورية في الجولان، واستعادت في اليوم الأول موقع جبل الشيخ.</p>
-                </article>
-                <article class="info_item">
-                    <span class="tag">١٤ أكتوبر</span>
-                    <h3>معركة المنصورة الجوية</h3>
-                    <p>اشتبك الطيران المصري مع الطيران الإسرائيلي في سماء الدلتا، ويحتفل سلاح الطيران بهذا اليوم كل عام.
-                    </p>
-                </article>
-                <article class="info_item">
-                    <span class="tag">١٤ أكتوبر</span>
-                    <h3>معركة الدبابات في سيناء</h3>
-                    <p>من أكبر معارك الدبابات في التاريخ الحديث، وغيّرت مسار العمليات على الجبهة.</p>
-                </article>
-                <article class="info_item">
-                    <span class="tag">١٦ أكتوبر</span>
-                    <h3>الثغرة وصمود السويس</h3>
-                    <p>تسللت قوة إسرائيلية غرب القناة، لكن مدينة السويس صمدت وأفشلت دخولها.</p>
-                </article>
-            </div>
-        </section>
-
-        <!--الأسلحة-->
-        <section class="sec sec_dark" id="weapons">
-            <h2 class="section-title">الأسلحة والمعدات</h2>
-            <div class="cards_grid">
-                <article class="weapon_item">
-                    <h3>صواريخ سام</h3>
-                    <p>شبكة الدفاع الجوي التي حمت القوات العابرة من الضربات الجوية.</p>
-                </article>
-                <article class="weapon_item">
-                    <h3>صواريخ مالوتكا</h3>
-                    <p>صواريخ موجهة مضادة للدبابات حملها الجنود ودمروا بها أعدادا من دبابات العدو.</p>
-                </article>
-                <article class="weapon_item">
-                    <h3>مضخات المياه</h3>
-                    <p>فتحت ثغرات في الساتر الترابي في وقت قصير.</p>
-                </article>
-                <article class="weapon_item">
-                    <h3>القوارب والكباري</h3>
-                    <p>نقلت الجنود أولا ثم الدبابات والمعدات إلى الضفة الشرقية.</p>
-                </article>
-                <article class="weapon_item">
-                    <h3>مقاتلات ميج-٢١</h3>
-                    <p>من مقاتلات سلاح الجو المصري في المعارك الجوية.</p>
-                </article>
-                <article class="weapon_item">
-                    <h3>دبابات تي-٥٥ وتي-٦٢</h3>
-                    <p>شكلت قوة الدبابات في المعارك البرية.</p>
-                </article>
-            </div>
-        </section>
-
-        <!--النتائج-->
-        <section class="sec" id="results">
-            <h2 class="section-title">نتائج الحرب</h2>
-            <div class="cards_grid">
-                <article class="result_item">
-                    <span class="result_year">١٩٧٤</span>
-                    <h3>فض الاشتباك الأول</h3>
-                    <p>انسحبت القوات الإسرائيلية من غرب القناة ومن جزء من شرقها.</p>
-                </article>
-                <article class="result_item">
-                    <span class="result_year">١٩٧٩</span>
-                    <h3>معاهدة السلام</h3>
-                    <p>وقعت مصر وإسرائيل المعاهدة، وحددت جدول الانسحاب من سيناء.</p>
-                </article>
-                <article class="result_item">
-                    <span class="result_year">١٩٨٢</span>
-                    <h3>عودة سيناء</h3>
-                    <p>اكتمل الانسحاب في ٢٥ أبريل ما عدا منطقة طابا.</p>
-                </article>
-                <article class="result_item">
-                    <span class="result_year">١٩٨٩</span>
-                    <h3>عودة طابا</h3>
-                    <p>رُفع العلم المصري على طابا في ١٩ مارس بعد تحكيم دولي.</p>
-                </article>
-            </div>
-        </section>
-
-        <!--المعرض-->
-        <section class="sec" id="gallery">
-            <h2 class="section-title">معرض الصور</h2>
-            <div class="gallery_box">
-                <figure class="gallery_item"><img src="static/img/moments/el3bor.jpg" alt="لحظة العبور">
-                    <figcaption>لحظة العبور</figcaption>
-                </figure>
-                <figure class="gallery_item"><img src="static/img/moments/el_kbary.jpg" alt="الكباري على القناة">
-                    <figcaption>الكباري على القناة</figcaption>
-                </figure>
-                <figure class="gallery_item"><img src="static/img/moments/elmoatelat.jpg" alt="المقاتلات">
-                    <figcaption>المقاتلات</figcaption>
-                </figure>
-                <figure class="gallery_item"><img src="static/img/moments/dbabat.jpg" alt="الدبابات">
-                    <figcaption>الدبابات</figcaption>
-                </figure>
-                <figure class="gallery_item"><img src="static/img/moments/el3alam.jpg" alt="رفع العلم">
-                    <figcaption>رفع العلم</figcaption>
-                </figure>
-                <figure class="gallery_item"><img src="static/img/moments/elkada.jpg" alt="القادة">
-                    <figcaption>القادة</figcaption>
-                </figure>
-                <figure class="gallery_item"><img src="static/img/moments/elmajen.jpg" alt="الماذن العالية">
-                    <figcaption>الماذن العالية</figcaption>
-                </figure>
             </div>
         </section>
 
@@ -334,14 +119,13 @@
                 </div>
 
                 <div class="leaders_item">
-                    <div class="leaders_img"><img src="static/img/we/hany.jpg" class="leaders_photo"
-                            alt="محمد هاني جادو"></div>
+                    <div class="leaders_img"><img src="" class="leaders_photo" alt="ملك محمد حسب الله"></div>
                     <div class="leaders_string">
-                        <h1>محمد هاني جادو</h1>
-                        <p>جمع الداتا و جاب صور و فديوهات</p>
+                        <h1>ملك محمد حسب الله</h1>
+                        <p>مسؤول قسم الأسئلة</p>
                     </div>
-                    <button data-title="محمد هاني جادو"
-                        data-text="جمع الداتا و جاب صور و فديوهات و جاب معظم الاحداث اللي حصلت و بحث عن الاحداث اللي حصلت و تصاعدات">دخول
+                    <button data-title="ملك محمد حسب الله"
+                        data-text="مسؤول قسم الأسئلة وضعت الاسئله و بنت قواعد الاسكريبت الخاص بها">دخول
                         الان</button>
                 </div>
             </div>
@@ -376,7 +160,6 @@
         <p>انتصارات أكتوبر &copy; SOFTWEB</p>
     </footer>
 
-    <script src="static/scripts/i18n.js"></script> <!--ترجمه-->
     <script src="static/scripts/app.js"></script> <!--اعدادات عامه-->
     <script src="static/scripts/index.js"></script> <!--تنقلات خاصه-->
     <script src="static/scripts/travel.js"></script> <!--تنقلات عامه-->
