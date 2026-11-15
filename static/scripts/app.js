@@ -1,283 +1,300 @@
-console.log("app.js is running...");
+
 (function () {
     'use strict';
 
-    /* ========== 0) الصورة غير الموجودة تختفي ويظهر مكانها الشكل البديل ========== */
-    document.querySelectorAll('img').forEach(function (img) {
-        function hide() { img.style.display = 'none'; }
-        img.addEventListener('error', hide);
-        if (img.complete && img.naturalWidth === 0) hide();
-    });
+    document.addEventListener('DOMContentLoaded', function () {
 
-    /* ========== 1) الهيدر يصغر عند النزول ========== */
-    var header = document.querySelector('header');
-    function onScroll() {
-        header.classList.toggle('scrolled', window.scrollY > 40);
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+        // =====================================
+        // 1. IMAGE FALLBACK
+        // =====================================
 
-    /* ========== 2) ظهور العناصر تدريجيا عند التمرير ========== */
-    var selector = '.section-title, .leaders_item, .plan_item, .info_item, .tl_item, ' +
-        '.weapon_item, .result_item, .gallery_item, .quiz_box, .sources_list li, .travel .box_item, .we .box_item, .film .box_item, .link_box';
-    var targets = document.querySelectorAll(selector);
-
-    targets.forEach(function (el) {
-        var firstClass = el.classList[0];
-        var siblings = Array.prototype.filter.call(el.parentElement.children, function (c) {
-            return c.classList[0] === firstClass;
-        });
-        var index = siblings.indexOf(el);
-        el.style.setProperty('--i', index % 4);
-        el.classList.add('reveal');
-    });
-
-    var drawTargets = document.querySelectorAll('.timeline');
-
-    if ('IntersectionObserver' in window) {
-        var revealObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in');
-                    revealObserver.unobserve(entry.target);
-                }
+        document.querySelectorAll('img').forEach(function (img) {
+            img.addEventListener('error', function () {
+                img.classList.add('image-error');
+                img.style.visibility = 'hidden';
             });
-        }, { threshold: 0.15 });
-        targets.forEach(function (el) { revealObserver.observe(el); });
-        drawTargets.forEach(function (el) { revealObserver.observe(el); });
-    } else {
-        targets.forEach(function (el) { el.classList.add('in'); });
-        drawTargets.forEach(function (el) { el.classList.add('in'); });
-    }
+        });
 
-    /* ========== 3) تمييز رابط القسم الحالي ========== */
-    var links = document.querySelectorAll('.link_item');
-    var sections = Array.prototype.map.call(links, function (a) {
-        var href = a.getAttribute('href');
-        return href.charAt(0) === '#' ? document.getElementById(href.slice(1)) : null;
-    });
+        // =====================================
+        // 2. HEADER SCROLL ANIMATION
+        // =====================================
 
-    if ('IntersectionObserver' in window) {
-        var navObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (!entry.isIntersecting) return;
-                links.forEach(function (a) {
-                    var active = a.getAttribute('href') === '#' + entry.target.id;
-                    a.classList.toggle('active', active);
-                    if (active) {
-                        /* يحرّك القائمة لتظهر الرابط النشط على الشاشات الضيقة */
-                        var box = a.parentElement;
-                        box.scrollTo({ left: a.offsetLeft - box.clientWidth / 2 + a.clientWidth / 2, behavior: 'smooth' });
+        var header = document.querySelector('header');
+
+        function handleHeaderScroll() {
+            if (!header) return;
+
+            header.classList.toggle(
+                'scrolled',
+                window.scrollY > 50
+            );
+        }
+
+        window.addEventListener('scroll', handleHeaderScroll, {
+            passive: true
+        });
+
+        handleHeaderScroll();
+
+        // =====================================
+        // SCROLL REVEAL ANIMATION
+        // =====================================
+
+        var revealSelectors = [
+            '.leader_profile',
+            '.leaders_item',
+            '.plan_item',
+            '.battle_item',
+            '.weapon_item',
+            '.result_item',
+            '.gallery_item',
+            '.timeline_item',
+            '.word_box'
+        ];
+
+        var revealElements = document.querySelectorAll(
+            revealSelectors.join(',')
+        );
+
+        if ('IntersectionObserver' in window) {
+            var revealObserver = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
                 });
+            }, {
+                threshold: 0.12
             });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-        sections.forEach(function (s) { if (s) navObserver.observe(s); });
-    }
 
-    /* ========== 4) نافذة تفاصيل القادة والخطط ========== */
-    var modal = document.getElementById('modal');
-    var modalTitle = document.getElementById('modalTitle');
-    var modalText = document.getElementById('modalText');
-    var modalClose = document.getElementById('modalClose');
-    var lastFocus = null;
-    var modalSource = null;
-
-    function openModal(title, text) {
-        modalSource = { title: title, text: text };
-        lastFocus = document.activeElement;
-        modalTitle.textContent = window.siteI18n.t(title);
-        modalText.textContent = window.siteI18n.t(text);
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('no_scroll');
-        modalClose.focus();
-    }
-
-    function closeModal() {
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('no_scroll');
-        modalSource = null;
-        if (lastFocus) lastFocus.focus();
-    }
-
-    document.addEventListener('languagechange', function () {
-        if (!modalSource) return;
-        modalTitle.textContent = window.siteI18n.t(modalSource.title);
-        modalText.textContent = window.siteI18n.t(modalSource.text);
-    });
-
-    /* الزر الذي فيه data-title يفتح النافذة (التنقل بين الصفحات في index.js) */
-    document.querySelectorAll('.leaders_item button, .plan_item button').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            if (btn.dataset.title) {
-                openModal(
-                    window.siteI18n.originalAttribute(btn, 'data-title'),
-                    window.siteI18n.originalAttribute(btn, 'data-text')
+            revealElements.forEach(function (element, index) {
+                element.classList.add('reveal');
+                element.style.setProperty(
+                    '--reveal-delay',
+                    Math.min(index % 5, 4) * 90 + 'ms'
                 );
+                revealObserver.observe(element);
+            });
+        } else {
+            revealElements.forEach(function (element) {
+                element.classList.add('visible');
+            });
+        }
+
+        // =====================================
+        // 4. ACTIVE NAVIGATION LINKS
+        // =====================================
+
+        var sections = document.querySelectorAll('main section[id]');
+        var navLinks = document.querySelectorAll('nav a[href*="#"]');
+
+        if ('IntersectionObserver' in window && sections.length) {
+            var sectionObserver = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (!entry.isIntersecting) return;
+
+                        navLinks.forEach(function (link) {
+                            var href = link.getAttribute('href');
+                            var id = href && href.split('#')[1];
+
+                            link.classList.toggle(
+                                'active',
+                                id === entry.target.id
+                            );
+                        });
+                    });
+                },
+                {
+                    threshold: 0.35
+                }
+            );
+
+            sections.forEach(function (section) {
+                sectionObserver.observe(section);
+            });
+        }
+
+        // =====================================
+        // 5. GENERIC LEADER / PLAN MODAL
+        // =====================================
+
+        var modal = document.getElementById('modal');
+        var modalTitle = document.getElementById('modalTitle');
+        var modalText = document.getElementById('modalText');
+        var modalClose = document.getElementById('modalClose');
+
+        if (modal && modalTitle && modalText && modalClose) {
+            var lastFocus = null;
+
+            function openModal(title, text, button) {
+                lastFocus = button;
+
+                modalTitle.textContent = title;
+                modalText.textContent = text;
+
+                modal.hidden = false;
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+
+                document.body.classList.add('no_scroll');
+
+                modalClose.focus();
             }
-        });
-    });
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-    });
 
-    /* ========== 5) اختبار صغير ========== */
-    var QUESTIONS = [
-        { q: 'متى بدأت حرب أكتوبر؟', o: ['٦ أكتوبر ١٩٧٣', '٥ يونيو ١٩٦٧', '٢٦ يوليو ١٩٥٦', '١٩ مارس ١٩٨٩'] },
-        { q: 'ما اسم خطة العبور المصرية؟', o: ['العملية بدر', 'العملية الفجر', 'العملية الصقر', 'العملية النسر'] },
-        { q: 'ما الخط الدفاعي الذي حطمه الجيش المصري شرق القناة؟', o: ['خط بارليف', 'خط ماجينو', 'خط المنصورة', 'خط السويس'] },
-        { q: 'ما الوسيلة التي فتحت الساتر الترابي بسرعة؟', o: ['مضخات المياه', 'الألغام', 'الطائرات', 'المدفعية الثقيلة'] },
-        { q: 'ما رقم قرار مجلس الأمن الذي دعا إلى وقف إطلاق النار؟', o: ['٣٣٨', '٢٤٢', '١٨١', '٦٧٨'] }
+            function closeModal() {
+                modal.classList.remove('open');
+                modal.hidden = true;
+                modal.setAttribute('aria-hidden', 'true');
+
+                document.body.classList.remove('no_scroll');
+
+                if (lastFocus) {
+                    lastFocus.focus();
+                }
+            }
+
+            document.querySelectorAll(
+                '.leaders_item button, .plan_item button'
+            ).forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var title = button.dataset.title;
+                    var text = button.dataset.text;
+
+                    if (!title || !text) return;
+
+                    openModal(title, text, button);
+                });
+            });
+
+            modalClose.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (
+                    event.key === 'Escape' &&
+                    modal.classList.contains('open')
+                ) {
+                    closeModal();
+                }
+            });
+        }
+
+// =====================================
+// 6. QUIZ - ARABIC ONLY
+// =====================================
+
+var quizBox = document.getElementById('quizBox');
+
+if (quizBox) {
+
+    var questions = [
+        {
+            q: 'متى بدأت حرب أكتوبر؟',
+            a: ['6 أكتوبر 1973', '5 يونيو 1967', '23 يوليو 1952'],
+            c: 0
+        },
+        {
+            q: 'ما اسم العملية المصرية لعبور قناة السويس؟',
+            a: ['بدر', 'القدس', 'الكرامة'],
+            c: 0
+        },
+        {
+            q: 'من كان رئيس مصر أثناء الحرب؟',
+            a: ['جمال عبد الناصر', 'محمد أنور السادات', 'حسني مبارك'],
+            c: 1
+        },
+        {
+            q: 'ما اسم خط الدفاع الإسرائيلي على قناة السويس؟',
+            a: ['خط ماجينو', 'خط بارليف', 'خط ألون'],
+            c: 1
+        },
+        {
+            q: 'ما القناة التي عبرتها القوات المصرية؟',
+            a: ['قناة السويس', 'قناة بنما', 'قناة كيل'],
+            c: 0
+        }
     ];
-    /* الإجابة الصحيحة هي الأولى في كل سؤال، ثم تُخلط الخيارات عند العرض */
 
-    var box = document.getElementById('quizBox');
     var current = 0;
     var score = 0;
 
-    function shuffle(arr) {
-        var a = arr.slice();
-        for (var i = a.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var t = a[i]; a[i] = a[j]; a[j] = t;
+    function renderQuiz() {
+        if (current >= questions.length) {
+            quizBox.innerHTML = `
+                <div class="quiz-result">
+                    <h3>انتهى الاختبار!</h3>
+                    <p>نتيجتك: ${score} / ${questions.length}</p>
+                    <button type="button" id="quizRestart">إعادة الاختبار</button>
+                </div>
+            `;
+
+            document.getElementById('quizRestart')
+                .addEventListener('click', startQuiz);
+
+            return;
         }
-        return a;
-    }
 
-    function localizeNumber(n) {
-        return window.siteI18n.language === 'ar'
-            ? String(n).replace(/\d/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; })
-            : String(n);
-    }
+        var item = questions[current];
 
-    function renderQuestion() {
-        var item = QUESTIONS[current];
-        var correct = item.o[0];
-        var progress = (current / QUESTIONS.length) * 100;
+        quizBox.innerHTML = `
+            <div class="quiz-question">
+                <p class="quiz-progress">
+                    السؤال ${current + 1} من ${questions.length}
+                </p>
 
-        box.innerHTML = '';
-        var step = document.createElement('div');
-        step.className = 'quiz_step';
-        step.innerHTML =
-            '<div class="quiz_bar"><span style="width:' + progress + '%"></span></div>' +
-            '<p class="quiz_count">' + window.siteI18n.t('السؤال') + ' ' +
-            localizeNumber(current + 1) + ' ' + window.siteI18n.t('من') + ' ' +
-            localizeNumber(QUESTIONS.length) + '</p>' +
-            '<h3 class="quiz_q"></h3><div class="quiz_opts"></div>';
-        step.querySelector('.quiz_q').textContent = window.siteI18n.t(item.q);
-        box.appendChild(step);
+                <h3>${item.q}</h3>
 
-        var optsBox = step.querySelector('.quiz_opts');
-        var answered = false;
+                <div class="quiz-answers">
+                    ${item.a.map(function (answer, index) {
+                        return `
+                            <button type="button"
+                                class="quiz-answer"
+                                data-index="${index}">
+                                ${answer}
+                            </button>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
 
-        shuffle(item.o).forEach(function (text) {
-            var b = document.createElement('button');
-            b.className = 'quiz_opt';
-            b.textContent = window.siteI18n.t(text);
-            b.addEventListener('click', function () {
-                if (answered) return;
-                answered = true;
-                var all = optsBox.querySelectorAll('.quiz_opt');
-                all.forEach(function (x) {
-                    x.disabled = true;
-                    if (x.textContent === window.siteI18n.t(correct)) x.classList.add('correct');
-                });
-                if (text === correct) {
+        quizBox.querySelectorAll('.quiz-answer').forEach(function (button) {
+            button.addEventListener('click', function () {
+                if (Number(button.dataset.index) === item.c) {
                     score++;
-                } else {
-                    b.classList.add('wrong');
                 }
-                step.querySelector('.quiz_bar span').style.width = ((current + 1) / QUESTIONS.length * 100) + '%';
 
-                var next = document.createElement('button');
-                next.className = 'btn quiz_next';
-                next.textContent = window.siteI18n.t(
-                    current === QUESTIONS.length - 1 ? 'عرض النتيجة' : 'السؤال التالي'
-                );
-                next.addEventListener('click', function () {
-                    current++;
-                    if (current < QUESTIONS.length) renderQuestion(); else renderResult();
-                });
-                step.appendChild(next);
+                current++;
+                renderQuiz();
             });
-            optsBox.appendChild(b);
         });
     }
 
-    function renderResult() {
-        var msg = score === QUESTIONS.length ? 'ممتاز! أنت تعرف الكثير عن حرب أكتوبر.'
-            : score >= 3 ? 'جيد جدا! راجع الأقسام مرة أخرى لتكمل المعلومات.'
-                : 'تصفح أقسام الموقع ثم أعد المحاولة.';
-        box.innerHTML =
-            '<div class="quiz_step quiz_end">' +
-            '<div class="quiz_bar"><span style="width:100%"></span></div>' +
-            '<div class="quiz_score">' + localizeNumber(score) + ' / ' + localizeNumber(QUESTIONS.length) + '</div>' +
-            '<p class="quiz_msg">' + window.siteI18n.t(msg) + '</p>' +
-            '<button class="btn" id="quizRestart">' + window.siteI18n.t('إعادة الاختبار') + '</button></div>';
-        document.getElementById('quizRestart').addEventListener('click', function () {
-            current = 0;
-            score = 0;
-            renderQuestion();
-        });
+    function startQuiz() {
+        current = 0;
+        score = 0;
+        renderQuiz();
     }
 
-    document.addEventListener('languagechange', function () {
-        if (box) {
-            current = 0;
-            score = 0;
-            renderQuestion();
-        }
-    });
+    startQuiz();
+}
+        // =====================================
+        // 7. VIDEO FALLBACK
+        // =====================================
 
-    /* ========== 6) مقاطع الفيديو ========== */
-    /* DEBUG = true يعرض سبب تعذر التشغيل داخل الصفحة. غيّرها إلى false عند التسليم */
-    var DEBUG = true;
-
-    document.querySelectorAll('.film').forEach(function (film) {
-        var video = film.querySelector('video');
-        var screen = film.querySelector('.film_screen');
-        if (!video || !screen) return;
-
-        function missing() {
-            if (film.classList.contains('empty')) return;
-            film.classList.add('empty');
-            video.style.display = 'none';
-
-            var sourceText = 'مقطع أرشيفي';
-            if (DEBUG) {
-                var code = video.error ? video.error.code : 0;
-                var why = code === 3 ? 'الملف موجود لكن تالف أو ترميزه غير مدعوم (حوّله إلى mp4 بترميز H.264)'
-                    : code === 2 ? 'خطأ في الشبكة أثناء التحميل'
-                        : 'الملف غير موجود في هذا المسار، أو صيغته غير مدعومة';
-                sourceText = 'تعذر تشغيل الفيديو\n' + why + '\n' + decodeURI(video.getAttribute('src'));
-            }
-
-            var label = document.createElement('span');
-            label.className = 'film_label';
-            label.dataset.sourceText = sourceText;
-            label.style.cssText = 'position:absolute;inset:0;z-index:3;display:grid;place-items:center;' +
-                'padding:16px;text-align:center;white-space:pre-line;' +
-                'color:#ddd;font-size:0.85rem;line-height:1.8;word-break:break-all';
-            screen.appendChild(label);
-            function updateLabel() {
-                label.textContent = sourceText.split('\n').map(window.siteI18n.t).join('\n');
-                label.style.direction = window.siteI18n.language === 'en' ? 'ltr' : 'rtl';
-            }
-            updateLabel();
-            document.addEventListener('languagechange', function () {
-                updateLabel();
+        document.querySelectorAll('video').forEach(function (video) {
+            video.addEventListener('error', function () {
+                video.classList.add('video-error');
             });
-        }
+        });
 
-        video.addEventListener('error', missing);
-        if (video.networkState === 3) missing();
     });
 
-    if (box) renderQuestion();
 })();

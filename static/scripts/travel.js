@@ -1,14 +1,14 @@
 console.log("travel.js is runing...");
 
-let arabWar = document.getElementById("arabWar");
+let quiz_btn_travel = document.getElementById("quiz-btn-travel");
 let threeWarsWay = document.getElementById("threeWarsWay");
 let israelWar = document.getElementById("israelWar");
 let OctobarWar = document.getElementById("OctobarWar");
 
-if (arabWar) {
-    arabWar.addEventListener("click", function() {
+if (quiz_btn_travel) {
+    quiz_btn_travel.addEventListener("click", function() {
         console.log("Button clicked!");
-        window.location.href = "templates/arabWar.html";
+        window.location.href = "templates/quiz.html";
     });
 }
 
